@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Gestor | Nsl</title>
+
+  <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/style-LG.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Estilos do pop-up */
+    #sobreposicao-popup {
+      display: none;
+      /* Inicialmente oculto */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    #conteudo-popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #fechar-popup {
+      border: none;
+      width: 82px;
+      height: 40px;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 5px;
+      background-color: #007bff;
+      font-size: 20px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    input[type='submit'] {
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 130px;
+      padding: 10px;
+      background-color: #161616;
+      text-align: center;
+      color: white;
+    }
+
+
+    .nomes-grupos {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .vertical {
+      height: 200px;
+      border-left: 2px solid;
+    }
+
+    .back {
+      width: 200px;
+
+    }
+
+    .front {
+      width: 200px;
+
+    }
+
+    .bd {
+      width: 200px;
+
+    }
+
+    .creditos {
+      margin-bottom: 10px;
+    }
+
+    .creditos p {
+      margin-bottom: 1px;
+    }
+
+    .informacoes-escola p {
+      margin-bottom: 7px;
+    }
+
+    .instagram-links {
+      display: flex;
+      margin: 0 auto;
+      width: 190px;
+
+    }
+
+    .tecnico-sala {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      width: 100px;
+
+    }
+
+    .escola-insta {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+      width: 90px;
+
+    }
+
+    .informacoes-escola img {
+      width: 20px;
+      margin: 0 5px;
+    }
+
+    .informacoes-escola a {
+      text-decoration: none;
+      color: #919191;
+      margin: 0 5px;
+    }
+
+    .linha-horizontal {
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header-bg">
+    <div class="header">
+      <img src="../img/Imagem3.png" alt="Brazão do Nossa Senhora de Lourdeso" class="brazao">
+      <div class="barra">
+        <ul class="header-menu">
+          <a href="../index.html">
+            <li>Aluno</li>
+          </a>
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="main-bg">
+    <div class="main-caixa">
+
+      <h1 class="main-login">LOGIN</h1>
+
+      <form action="../php/processar-gestor.php" method="post" class="main-form">
+        <label for="" class="main-label">
+          Senha:
+          <input type="password" name="senha" placeholder="000-000" class="main-input" required>
+          <img src="../img/icons8-lock-30.png" alt="">
+        </label>
+
+        <div>
+          <label><input type="checkbox">Mostra Senha</label>
+          </label>
+        </div>
+
+        <button type="submit" name="enviar" class="botao">ENTRAR</button>
+      </form>
+    </div>
+  </main>
+  <!-- Pop-up -->
+  <div id="sobreposicao-popup">
+    <div id="conteudo-popup">
+      <h2>Ocorreu um erro!</h2>
+      <p>parece que a senha está incorreta <br> tente novamente</p>
+      <button id="fechar-popup" onclick="fecharPopup('sobreposicao-popup')" >Fechar</button>
+    </div>
+  </div>
+
+  <!-- Script JavaScript -->
+  <script>
+
+    const param = new URLSearchParams(window.location.search)
+    const verif = param.get("status")
+
+    if(verif == "false"){
+        mostrarPopup('sobreposicao-popup')
+        history.replaceState({},document.title,window.location.pathname)
+    }
+    function mostrarPopup(id){
+        document.getElementById(id).style.display = 'block'
+    }
+
+    function fecharPopup(id){
+        document.getElementById(id).style.display = 'none'
+    }
+  </script>
+  <footer>
+    <div class="creditos">
+        <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
+        </p>
+        <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
+
+        <div class="nomes-grupos">
+
+
+            <div class="back">
+                <h4>Backend<br> desenvolvido por:</h4>
+                <p class="backend-info"> Gabriel <br>Cirqueira</p>
+            </div>
+            <div class="vertical"></div>
+
+            <div class="bd">
+                <h4>Banco de dados <br>desenvolvido por:</h4>
+                <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus <br>Trindade</p>
+
+            </div>
+            <div class="vertical"></div>
+
+            <div class="front">
+                <h4>Frontend <br>desenvolvido por:</h4>
+                <p class="frontend-info"> Guilherme<br> Vagmaker & <br> Arthur <br> Possino</p>
+
+            </div>
+        </div>
+
+    </div>
+    <hr class="linha-horizontal">
+    <div class="informacoes-escola">
+        
+        <div class="instagram-links">
+
+            <div class="tecnico-sala">
+                <img src="../img/logo_sala.png" alt="Logo Sala" class="logo-sala">
+                <a href="https://www.instagram.com/2.tecnico_nsl/" target="_blank" class="link-tecnico">Técnico</a>
+
+            </div>
+            <div class="escola-insta">
+                <img src="../img/instagram.png" alt="Instagram" class="logo-instagram">
+                <a href="https://www.instagram.com/nslescola/" target="_blank" class="link-escola">Escola</a>
+
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>
