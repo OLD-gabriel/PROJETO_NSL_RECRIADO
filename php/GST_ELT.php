@@ -46,14 +46,14 @@ if (isset($_POST["excluir"])) {
     foreach ($consulta as $row) {
         if ($botaoclicado == "excluir-" . $row["nome_eletiva"]) {
 
-            if($row["turno"] == "INTEGRAL"){
-                $nome_eletiva = str_replace("INTEGRAL_","",$row["nome_eletiva"]);
+            if($row["turno"] == "INTERMEDIÁRIO"){
+                $nome_eletiva = str_replace("INT_","",$row["nome_eletiva"]);
                 $nome_tabela_eletiva = "eletiva_I_" . str_replace(' ','_',$nome_eletiva);
-            }else if($row["turno"] == "TARDE"){
-                $nome_eletiva = str_replace("TARDE_","",$row["nome_eletiva"]);
-                $nome_tabela_eletiva = "eletiva_T_" . str_replace(' ','_',$nome_eletiva);
+            }else if($row["turno"] == "VESPERTINO"){
+                $nome_eletiva = str_replace("VES_","",$row["nome_eletiva"]);
+                $nome_tabela_eletiva = "eletiva_V_" . str_replace(' ','_',$nome_eletiva);
             }else{
-                $nome_eletiva = str_replace("NOTURNO_","",$row["nome_eletiva"]);
+                $nome_eletiva = str_replace("NOT_","",$row["nome_eletiva"]);
                 $nome_tabela_eletiva = "eletiva_N_" . str_replace(' ','_',$nome_eletiva);
             }
 
@@ -75,15 +75,15 @@ if(isset($_POST["eletiva"])){
     $botaoclicado = $_POST["eletiva"];
     foreach($consulta as $row){
         if($botaoclicado == "escolher-" . $row["nome_eletiva"]){
-            if($row["turno"] == "INTEGRAL"){
+            if($row["turno"] == "INTERMEDIÁRIO"){
                 $prefixo_tabela = "eletiva_I_";
-                $prefixo = "INTEGRAL_";
-            }else if ($row["turno"] == "TARDE"){
-                $prefixo_tabela = "eletiva_T_";
-                $prefixo = "TARDE_";
+                $prefixo = "INT_";
+            }else if ($row["turno"] == "VESPERTINO"){
+                $prefixo_tabela = "eletiva_V_";
+                $prefixo = "VES_";
             }else{
                 $prefixo_tabela = "eletiva_N_";
-                $prefixo = "NOTURNO_";
+                $prefixo = "NOT_";
             }
             session_start();
             $_SESSION["eletiva"] = $prefixo_tabela . str_replace($prefixo,"",$row["nome_eletiva"]);
@@ -126,6 +126,11 @@ if(isset($_POST["eletiva"])){
 
     <!-- Script JavaScript -->
     <script>
+
+        setTimeout( function(){
+            location.reload()
+        },10000)
+
         const botaoFecharPopup = document.getElementById('fechar-popup');
         const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
 

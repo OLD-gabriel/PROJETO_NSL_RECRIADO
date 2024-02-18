@@ -9,12 +9,12 @@ $curso_tec = $_SESSION['curso'];
 $nome_aluno = $_SESSION['nome'];
 $turno = $_SESSION["turno"];
 
-if($turno == "INTEGRAL"){
-    $prefixo = "INTEGRAL_";
-}else if ($turno == "TARDE"){
-    $prefixo = "TARDE_";
+if($turno == "INTERMEDIÁRIO"){
+    $prefixo = "INT_";
+}else if ($turno == "VESPERTINO"){
+    $prefixo = "VES_";
 }else{
-    $prefixo = "NOTURNO_";
+    $prefixo = "NOT_";
 }
 
 
@@ -61,14 +61,14 @@ if (isset($_POST["tutores"])) {
                     $vagas = $row["vagas"] - 1;
                     $nome_registro_tutoria = $row["nome_professor"];
                     
-                    if($row["turno"] == "INTEGRAL"){
-                        $nome_professor = str_replace("INTEGRAL_","",$row["nome_professor"]);
+                    if($row["turno"] == "INTERMEDIÁRIO"){
+                        $nome_professor = str_replace("INT_","",$row["nome_professor"]);
                         $nome_tabela_tutoria = "tutoria_I_" . str_replace(" ","_",$nome_professor);
-                    }else if($row["turno"]  == "TARDE"){
-                        $nome_professor = str_replace("TARDE_","",$row["nome_professor"]);
-                        $nome_tabela_tutoria = "tutoria_T_" . str_replace(" ","_",$nome_professor);
+                    }else if($row["turno"]  == "VESPERTINO"){
+                        $nome_professor = str_replace("VES_","",$row["nome_professor"]);
+                        $nome_tabela_tutoria = "tutoria_V_" . str_replace(" ","_",$nome_professor);
                     }else{
-                        $nome_professor = str_replace("NOTURNO_","",$row["nome_professor"]);
+                        $nome_professor = str_replace("NOT_","",$row["nome_professor"]);
                         $nome_tabela_tutoria = "tutoria_N_" . str_replace(" ","_",$nome_professor);
                     }
  

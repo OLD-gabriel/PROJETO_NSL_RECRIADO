@@ -8,15 +8,15 @@
         $vagas = $_POST["vagas"];
         $turno = $_POST["turno"];
 
-        if($turno == "INTEGRAL"){
+        if($turno == "INTERMEDIÁRIO"){
             $nome_tabela_eletiva = "eletiva_I_" . str_replace(' ','_', $_POST['nome-eletiva']);
-            $nome_registro = "INTEGRAL_" . $_POST["nome-eletiva"];
-        }else if($turno == "TARDE"){
-            $nome_tabela_eletiva = "eletiva_T_" . str_replace(' ','_', $_POST['nome-eletiva']);
-            $nome_registro = "TARDE_" . $_POST["nome-eletiva"];
+            $nome_registro = "INT_" . $_POST["nome-eletiva"];
+        }else if($turno == "VESPERTINO"){
+            $nome_tabela_eletiva = "eletiva_V_" . str_replace(' ','_', $_POST['nome-eletiva']);
+            $nome_registro = "VES_" . $_POST["nome-eletiva"];
         }else{
             $nome_tabela_eletiva = "eletiva_N_" . str_replace(' ','_', $_POST['nome-eletiva']);
-            $nome_registro = "NOTURNO_" . $_POST["nome-eletiva"];
+            $nome_registro = "NOT_" . $_POST["nome-eletiva"];
         }
 
         $verificar_inexistencia = query("SHOW TABLES LIKE '$nome_tabela_eletiva'");

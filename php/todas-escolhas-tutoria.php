@@ -122,8 +122,8 @@ if (isset($_POST["enviar"])) {
             <form method="post">
             <h1>Selecione o turno</h1><br>
             <select name="turno" id="turno" required>
-                <option value="INTEGRAL">INTEGRAL</option>
-                <option value="TARDE">TARDE</option>
+                <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
+                <option value="VESPERTINO">VESPERTINO</option>
                 <option value="NOTURNO">NOTURNO</option>
             </select>
             <input type="submit" name="enviar-turno" class="btn-submit">
@@ -134,7 +134,13 @@ if (isset($_POST["enviar"])) {
              <?php
                 if (isset($_POST["enviar-turno"])) {
                     $turno = $_POST["turno"];
-                    $prefixo = $turno . "_";
+                    if($turno == "INTERMEDIÁRIO"){
+                        $prefixo = "INT_";
+                    }else if ($turno == "VESPERTINO"){
+                        $prefixo = "VES_";
+                    }else{
+                        $prefixo = "NOT_";
+                    }
                     $consulta = query("SELECT * FROM todas_escolhas_tutoria WHERE turno = '$turno'");
                     if($consulta->num_rows > 0){
                     echo "<h1>Todas as escolhas</h1><h2>Professores e Alunos<br> Turno: ".$turno."</h2>";

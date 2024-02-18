@@ -9,12 +9,12 @@ $curso_tec = $_SESSION['curso'];
 $nome_aluno = $_SESSION['nome'];
 $turno = $_SESSION['turno'];
 
-if($turno == "INTEGRAL"){
-    $prefixo = "INTEGRAL_";
-}else if ($turno == "TARDE"){
-    $prefixo = "TARDE_";
+if($turno == "INTERMEDIÁRIO"){
+    $prefixo = "INT_";
+}else if ($turno == "VESPERTINO"){
+    $prefixo = "VES_";
 }else{
-    $prefixo = "NOTURNO_";
+    $prefixo = "NOT_";
 }
 
 function mostarEletivas()
@@ -74,16 +74,16 @@ if(isset($_POST["eletivas"])) {
                     $nome_eletiva = $row["nome_eletiva"];
                     $nome_registro =  $row["nome_eletiva"];
 
-                    if($turno == "INTEGRAL"){
-                        $nome_eletiva = str_replace("INTEGRAL_","",$nome_registro);
+                    if($turno == "INTERMEDIÁRIO"){
+                        $nome_eletiva = str_replace("INT_","",$nome_registro);
                         $nome_tabela_eletiva = "eletiva_I_" . str_replace(' ','_',$nome_eletiva);
 
-                    }elseif($turno == "TARDE"){
-                        $nome_eletiva = str_replace("TARDE_","",$nome_registro);
-                        $nome_tabela_eletiva = "eletiva_T_" . str_replace(' ','_',$nome_eletiva);
+                    }elseif($turno == "VESPERTINO"){
+                        $nome_eletiva = str_replace("VES_","",$nome_registro);
+                        $nome_tabela_eletiva = "eletiva_V_" . str_replace(' ','_',$nome_eletiva);
 
                     }else{
-                        $nome_eletiva = str_replace("NOTURNO_","",$nome_registro);
+                        $nome_eletiva = str_replace("NOT_","",$nome_registro);
                         $nome_tabela_eletiva = "eletiva_N_" . str_replace(' ','_',$nome_eletiva); 
                     }
 

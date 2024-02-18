@@ -4,15 +4,15 @@
     $nome = $_POST["nome"];
     $turno = $_POST["turno"];
 
-    if($turno == "INTEGRAL"){
+    if($turno == "INTERMEDIÁRIO"){
         $nome_tabela_tutoria = "tutoria_I_" . str_replace(" ","_",$nome);
-        $nome_registro = "INTEGRAL_" . $_POST["nome"];
-    }else if($turno == "TARDE"){
-        $nome_tabela_tutoria = "tutoria_T_" . str_replace(" ","_",$nome);
-        $nome_registro = "TARDE_" . $_POST["nome"];
+        $nome_registro = "INT_" . $_POST["nome"];
+    }else if($turno == "VESPERTINO"){
+        $nome_tabela_tutoria = "tutoria_V_" . str_replace(" ","_",$nome);
+        $nome_registro = "VES_" . $_POST["nome"];
     }else{
         $nome_tabela_tutoria = "tutoria_N_" . str_replace(" ","_",$nome);
-        $nome_registro = "NOTURNO_" . $_POST["nome"];
+        $nome_registro = "NOT_" . $_POST["nome"];
     }
     
     $verificar_inexistencia = query("SHOW TABLES LIKE '$nome_tabela_tutoria'");

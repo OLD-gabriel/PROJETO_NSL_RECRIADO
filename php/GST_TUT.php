@@ -6,10 +6,17 @@ function Exibir_tutores(){
     $consulta = query("SELECT * FROM tutoria ORDER BY turno ASC ");
     if ($consulta->num_rows > 0) {
         foreach ($consulta as $row) {
+            if($row["turno"] == "INTERMEDIÁRIO"){
+                $prefixo_n = "INT_";
+            }else if ($row["turno"] == "VESPERTINO"){
+                $prefixo_n = "VES_";
+            }else{
+                $prefixo_n = "NOT_";
+            }
             echo "
             <div class='tutores'>
                 <img src='../img/avatar.png' alt='' class=''>
-                <span class='nome-tutor'>" . str_replace($row["turno"] . "_","",$row["nome_professor"]) . "<br>
+                <span class='nome-tutor'>" . str_replace($prefixo_n,"",$row["nome_professor"]) . "<br>
                     vagas:
                     " . $row["vagas"] . "
                 </span>
@@ -42,14 +49,14 @@ if (isset($_POST["excluir"])) {
     foreach ($consulta as $row) {
         if ($botaoclicado == "excluir-" . $row["nome_professor"]) {
 
-            if($row["turno"] == "INTEGRAL"){
-                $nome_professor = str_replace("INTEGRAL_","",$row["nome_professor"]);
+            if($row["turno"] == "INTERMEDIÁRIO"){
+                $nome_professor = str_replace("INT_","",$row["nome_professor"]);
                 $nome_tabela_tutoria = "tutoria_I_" . str_replace(" ","_",$nome_professor);
-            }else if($row["turno"]  == "TARDE"){
-                $nome_professor = str_replace("TARDE_","",$row["nome_professor"]);
-                $nome_tabela_tutoria = "tutoria_T_" . str_replace(" ","_",$nome_professor);
+            }else if($row["turno"]  == "VESPERTINO"){
+                $nome_professor = str_replace("VES_","",$row["nome_professor"]);
+                $nome_tabela_tutoria = "tutoria_V_" . str_replace(" ","_",$nome_professor);
             }else{
-                $nome_professor = str_replace("NOTURNO_","",$row["nome_professor"]);
+                $nome_professor = str_replace("NOT_","",$row["nome_professor"]);
                 $nome_tabela_tutoria = "tutoria_N_" . str_replace(" ","_",$nome_professor);
             }
 
@@ -73,15 +80,15 @@ if(isset($_POST["tutores"])){
     foreach($consulta as $row){
         if($botaoclicado == "escolher-" . $row["nome_professor"]){
 
-            if($row["turno"] == "INTEGRAL"){
+            if($row["turno"] == "INTERMEDIÁRIO"){
                 $prefixo_tabela = "tutoria_I_";
-                $prefixo = "INTEGRAL_";
-            }else if ($row["turno"] == "TARDE"){
-                $prefixo_tabela = "tutoria_T_";
-                $prefixo = "TARDE_";
+                $prefixo = "INT_";
+            }else if ($row["turno"] == "VESPERTINO"){
+                $prefixo_tabela = "tutoria_V_";
+                $prefixo = "VES_";
             }else{
                 $prefixo_tabela = "tutoria_N_";
-                $prefixo = "NOTURNO_";
+                $prefixo = "NOT_";
             }
 
             session_start();

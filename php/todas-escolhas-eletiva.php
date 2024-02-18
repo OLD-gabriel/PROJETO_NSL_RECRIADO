@@ -121,8 +121,8 @@ if (isset($_POST["enviar"])) {
              <form method="post">
             <h1>Selecione o turno</h1><br>
             <select name="turno" id="turno" required>
-                <option value="INTEGRAL">INTEGRAL</option>
-                <option value="TARDE">TARDE</option>
+                <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
+                <option value="VESPERTINO">VESPERTINO</option>
                 <option value="NOTURNO">NOTURNO</option>
             </select>
             <input type="submit" name="enviar-turno" class="btn-submit">
