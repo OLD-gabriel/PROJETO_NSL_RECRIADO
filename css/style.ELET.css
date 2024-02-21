@@ -97,15 +97,16 @@ button {
 
 .botao{
  
-  display: block;
-  padding: 10px 15px;
-  border: 1px solid #ffbb01;
+  border: none;
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
+  text-align: center;
   background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  color: rgb(0, 0, 0);
-  box-shadow: 0px 0px 3px #ffa601;
-  font-size: 1.3rem;
-  border-radius: 8px;
-  font-weight: 500;
+  border-radius: 5px;
+  font-size: 22px;
+  border: 2px solid rgb(252, 122, 0);
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
 }
 
 
@@ -144,7 +145,7 @@ button {
 
 .eletivas span{
   margin-top: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   display: grid;
   text-align: center;
@@ -182,11 +183,11 @@ button {
   }
   
   .header-user .nome{
-    font-size: 1.2rem;
+    font-size: 1rem;
    }
 
    .eletivas span{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
    }
 
 }
@@ -201,6 +202,7 @@ button {
 
 .nome-eletiva{
   margin: 0px;
+  font-size: 15px;
 }
 
 .botao-excluir{
@@ -247,6 +249,7 @@ button {
   flex-direction: column;
   top: 50%;
   left: 50%;
+  text-align: center;
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
@@ -292,20 +295,28 @@ button {
   transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
+  text-align: center;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
 #fechar-popup2 {
-  max-width: max-content;
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: 1px solid #ffbb01;
+  border: none;
+  width: 82px;
+  height: 40px;
+  font-weight: bold;
+  text-align: center;
   background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  font-size: 20px;
 }
+#fechar-popup2:hover{
+  border: 1px solid #d19900;
+  background-image: linear-gradient(to bottom, #ca8a00, #b85000);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
 #fechar-popup:hover{
   border: 1px solid #d19900;
   background-image: linear-gradient(to bottom, #cf8e0c, #cf600b);
@@ -332,6 +343,9 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -339,19 +353,21 @@ button {
 }
 
 #fechar-popup3 {
-  max-width: max-content;
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: 1px solid #ffbb01;
+  border: none;
+  width: 82px;
+  height: 40px;
+  font-weight: bold;
   background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  color: rgb(0, 0, 0);
+  text-align: center;
+  border-radius: 5px;
+  font-size: 20px;
 }
+
 #fechar-popup3:hover{
   border: 1px solid #d19900;
-  background-image: linear-gradient(to bottom, #cf8e0c, #cf600b);
+  background-image: linear-gradient(to bottom, #ca8a00, #b85000);
   color: rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 .title-eletiva{

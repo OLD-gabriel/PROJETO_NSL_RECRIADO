@@ -9,14 +9,6 @@ $curso_tec = $_SESSION['curso'];
 $nome_aluno = $_SESSION['nome'];
 $turno = $_SESSION['turno'];
 
-if($turno == "INTERMEDIÁRIO"){
-    $prefixo = "INT_";
-}else if ($turno == "VESPERTINO"){
-    $prefixo = "VES_";
-}else{
-    $prefixo = "NOT_";
-}
-
 function mostarEletivas()
 {
     $consulta = query("SELECT * FROM eletivas");
@@ -31,19 +23,17 @@ function mostarEletivas()
                     echo "
                             <div class='eletivas'> 
                                 <h2>ELETIVA:</h2>  
-                                <span class='nome-tutor'>" . str_replace($prefixo, "", $row["nome_eletiva"]) . " <br> </span>                     
-                                <h2>Professores:</h2>  
-                                <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_1"]) . " <br> </span>
-                                <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_2"]) . " <br> </span>
-                                <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_3"]) . " <br> </span>
-                                <h2>Curso:</h2>
-                                <span class='nome-eletiva'>" . str_replace("_", " ", $row["curso"]) . " <br> </span>
+                                <span class='nome-tutor'>" .    $row["nome_eletiva"] . " <br> </span>                     
+                                <h2>Professores:</h2>             <span class='nome-eletiva'>" . $row["professor_1"] . " <br> </span>
+                                <span class='nome-eletiva'>" . $row["professor_2"] . " <br> </span>
+                                <span class='nome-eletiva'>" . $row["professor_3"] . " <br> </span>
+                                <h2>Curso:</h2>           <span class='nome-eletiva'>" . $row["curso"] . " <br> </span>
                                 <span class='nome-eletiva'>
                                     <b>vagas:</b>
                                     " . $row["vagas"] . " 
                                 </span>
                                 <form action='' method='post'>
-                                    <button type='submit' class='botao' name='eletivas' value='escolher-" . $row["nome_eletiva"] . "'> Escolher </button>
+                                    <button type='submit' class='botao' name='eletivas' value='escolher-" . $row["nome_eletiva"].$row["turno"] . "'> Escolher </button>
                                 </form>
                             </div>";
                 }
@@ -67,37 +57,18 @@ if(isset($_POST["eletivas"])) {
         $botaoclicado = $_POST["eletivas"];
         
         foreach($consulta as $row) {
-            if($botaoclicado == "escolher-" . $row["nome_eletiva"]) {
+            if($botaoclicado == "escolher-" . $row["nome_eletiva"].$row["turno"]) {
                 if($row["vagas"] > 0) {
                     //definindo algumas variaveis
-                    $vagas = $row["vagas"] - 1;
                     $nome_eletiva = $row["nome_eletiva"];
-                    $nome_registro =  $row["nome_eletiva"];
 
-                    if($turno == "INTERMEDIÁRIO"){
-                        $nome_eletiva = str_replace("INT_","",$nome_registro);
-                        $nome_tabela_eletiva = "eletiva_I_" . str_replace(' ','_',$nome_eletiva);
+                    $vagas = $row["vagas"] - 1;
 
-                    }elseif($turno == "VESPERTINO"){
-                        $nome_eletiva = str_replace("VES_","",$nome_registro);
-                        $nome_tabela_eletiva = "eletiva_V_" . str_replace(' ','_',$nome_eletiva);
+                    $atualizar_vagas = query("UPDATE eletivas SET vagas = '$vagas' WHERE nome_eletiva = '$nome_eletiva' AND turno = '$turno'");
 
-                    }else{
-                        $nome_eletiva = str_replace("NOT_","",$nome_registro);
-                        $nome_tabela_eletiva = "eletiva_N_" . str_replace(' ','_',$nome_eletiva); 
-                    }
-
-                    //atualizar as vagas da tabela selecionada
-                    $atualizar_vagas = query("UPDATE eletivas SET vagas = '$vagas' WHERE nome_eletiva = '$nome_registro'");
-
-                    //inserir dados na tabela da eletiva
-                    $inserir_tabela_eletiva = query("INSERT INTO $nome_tabela_eletiva (RA, nome_aluno, serie_aluno) VALUES ('$RA', '$nome_aluno', '$serie')");
-
-                    //inserir dados na tabela que armazena todas as escolhas
                     $inserir_tabela_tudo = query("INSERT INTO todas_escolhas_eletiva (RA, nome_aluno, nome_eletiva, serie_aluno, curso, turno) VALUES ('$RA', '$nome_aluno', '$nome_eletiva', '$serie', '$curso_tec','$turno')");
                     
-                    //verificando... se tudo deu certo irá enviar um parametro para URL e o JS captura e ebibe um popup
-                    if($atualizar_vagas && $inserir_tabela_tudo && $inserir_tabela_eletiva) {
+                    if($atualizar_vagas && $inserir_tabela_tudo) {
                         header("location: ?status=true");
                     }
                 } else {
@@ -109,6 +80,9 @@ if(isset($_POST["eletivas"])) {
         header("location: ?status=jaEscolheu");
     }
 }
+$pegar_eletiva = query("SELECT * FROM todas_escolhas_eletiva WHERE RA = '$RA' ");
+
+$eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
 
 ?>
 <!DOCTYPE html>
@@ -127,7 +101,7 @@ if(isset($_POST["eletivas"])) {
         a {
             color: black;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 15px;
             text-align: justify;
         }
     </style>
@@ -148,8 +122,14 @@ if(isset($_POST["eletivas"])) {
         </div>
     </header>
 
-    <h1 class="title-eletiva">eletivas do curso de <br> <?php echo "{$curso_tec} <br> Turno:  {$turno}" ;?></h1>
-
+    <h3 class="title-eletiva">eletivas do curso de <br> <?php echo "{$curso_tec} <br> Turno:  {$turno}" ;?></h3><br>
+    <?php 
+        if(!empty($eletiva_selecionado)){
+            echo "<h3 class='title-eletiva' > Você ecolheu a eletiva <br> {$eletiva_selecionado["nome_eletiva"]} </h3>" ;
+        }else{
+            echo "<h3 class='title-eletiva'> Você ainda não escolheu sua eletiva. </h3>" ;
+        }
+    ?>
     <main class="eletiva-bg">
         <?php
 
@@ -171,9 +151,9 @@ if(isset($_POST["eletivas"])) {
 
     <!-- Pop-up -->
     <div id="sobreposicao-popup2">
-        <div id="conteudo-popup">
-            <h2 style="padding:5px;">Erro!</h2>
-            <p>Ocorreu um erro ao inserir registro! <br><br> Talvez você já tenha selecionado a eletiva! <br> </p>
+        <div id="conteudo-popup2">
+            <h2 style="padding:5px;">Eletiva já escolhida!</h2> <br>
+            <p>Você escolheu a eletiva <br> <?php echo $eletiva_selecionado["nome_eletiva"]?><br> </p>
             <div class="botoes">
                 <button id="fechar-popup2"  onclick="fecharPopup('sobreposicao-popup2')" >Fechar</button>
             </div>
@@ -182,12 +162,10 @@ if(isset($_POST["eletivas"])) {
 
     <!-- Pop-up -->
     <div id="sobreposicao-popup3">
-        <div id="conteudo-popup">
-            <h2 style="padding:5px;">Erro!</h2>
+        <div id="conteudo-popup3">
+            <h2 style="padding:5px;">Sem Vagas!</h2>
             <p>Essa eletiva atingiu o limite de vagas! <br> </p>
-            <div class="botoes">
                 <button id="fechar-popup3"  onclick="fecharPopup('sobreposicao-popup3')" >Fechar</button>
-            </div>
         </div>
     </div>
 

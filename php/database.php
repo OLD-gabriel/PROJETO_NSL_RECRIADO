@@ -2,16 +2,6 @@
 
 include 'variables.php';
 
-$conn_banco = mysqli_connect($host, $user, $password);
-
-if ($conn_banco) {
-    $criar_banco = mysqli_query($conn_banco, "CREATE DATABASE IF NOT EXISTS ESCOLA
-        default charset utf8
-        default collate utf8_general_ci;
-        ");
-}
-
-mysqli_close($conn_banco);
 
 $conn = mysqli_connect($host, $user, $password, $db);
 
@@ -22,7 +12,7 @@ function query($str){
 
 // OBS: só pode ter uma coluna como 'auto_increment' na tabela, e ela deve ser primary key
 
-$create_table = query("CREATE TABLE IF NOT EXISTS TODAS_ESCOLHAS_ELETIVA(
+$create_table = query("CREATE TABLE IF NOT EXISTS todas_escolhas_eletiva(
     RA int,
     nome_aluno varchar(255),
     nome_eletiva varchar(255),
@@ -32,7 +22,7 @@ $create_table = query("CREATE TABLE IF NOT EXISTS TODAS_ESCOLHAS_ELETIVA(
 )default charset utf8;
 ");
 
-$create_table = query("CREATE TABLE IF NOT EXISTS ELETIVAS(
+$create_table = query("CREATE TABLE IF NOT EXISTS eletivas(
     nome_eletiva varchar(255),
     professor_1 varchar(255),
     professor_2 varchar(255),
@@ -43,7 +33,7 @@ $create_table = query("CREATE TABLE IF NOT EXISTS ELETIVAS(
 )default charset utf8;
 ");
 
-$create_table = query("CREATE TABLE IF NOT EXISTS TODAS_ESCOLHAS_TUTORIA(
+$create_table = query("CREATE TABLE IF NOT EXISTS todas_escolhas_tutoria(
     RA int,
     nome_aluno varchar(255),
     nome_tutoria varchar(255),
@@ -52,13 +42,13 @@ $create_table = query("CREATE TABLE IF NOT EXISTS TODAS_ESCOLHAS_TUTORIA(
 )default charset utf8;
 ");
 
-$create_table = query("CREATE TABLE IF NOT EXISTS TUTORIA(
+$create_table = query("CREATE TABLE IF NOT EXISTS tutoria(
     nome_professor varchar(255),
     turno varchar(255),
     vagas int
 )default charset utf8;");
 
-$create_table = query("CREATE TABLE IF NOT EXISTS ALUNOS(
+$create_table = query("CREATE TABLE IF NOT EXISTS alunos(
     RA int,
     nome_aluno varchar(255),
     serie_aluno varchar(255),
@@ -71,7 +61,7 @@ $create_table = query("CREATE TABLE IF NOT EXISTS ALUNOS(
 $pegar_dado = query("SELECT * FROM alunos WHERE RA = '262169'");
 
 if($pegar_dado->num_rows == 0){
-    $inserir_dados_alunos = query("INSERT INTO alunos(RA,nome_aluno,serie_aluno,turno,curso_aluno) VALUES
+    $inserir_dados_alunos = query("INSERT INTO alunos(RA,nome_aluno,serie_aluno,curso_aluno,turno) VALUES
 ('262169','ALEXANDRE DE OLIVEIRA ROSA','1ºIM01 HUM','HUMANIDADES','INTERMEDIÁRIO'),
 ('286908','ANA CLARA VIANA DE OLIVEIRA ROCHA','1ºIM01 HUM','HUMANIDADES','INTERMEDIÁRIO'),
 ('265825','ANA LUYZA ALVES DA ROCHA SANTOS','1ºIM01 HUM','HUMANIDADES','INTERMEDIÁRIO'),
@@ -780,8 +770,6 @@ if($pegar_dado->num_rows == 0){
 ('83257','YASMIN VIANA FELICIANO DA SILVA','3ºV01 HUM','HUMANIDADES','VESPERTINO')
     ");
 
-}else{
-
-}
+} 
 
 

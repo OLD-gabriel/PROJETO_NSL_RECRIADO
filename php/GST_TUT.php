@@ -2,21 +2,13 @@
 include "database.php";
 
 function Exibir_tutores(){
-    global $prefixo;
     $consulta = query("SELECT * FROM tutoria ORDER BY turno ASC ");
     if ($consulta->num_rows > 0) {
         foreach ($consulta as $row) {
-            if($row["turno"] == "INTERMEDIÁRIO"){
-                $prefixo_n = "INT_";
-            }else if ($row["turno"] == "VESPERTINO"){
-                $prefixo_n = "VES_";
-            }else{
-                $prefixo_n = "NOT_";
-            }
             echo "
             <div class='tutores'>
                 <img src='../img/avatar.png' alt='' class=''>
-                <span class='nome-tutor'>" . str_replace($prefixo_n,"",$row["nome_professor"]) . "<br>
+                <span class='nome-tutor'>" . $row["nome_professor"] . "<br>
                     vagas:
                     " . $row["vagas"] . "
                 </span>
@@ -24,10 +16,10 @@ function Exibir_tutores(){
                 <span class='nome-tutor'>" . $row["turno"] . "
                 </span>
                 <form action='' method='post'>
-                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .  $row["nome_professor"]  . "' >Ver alunos</button>
+                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .   $row["nome_professor"].$row["turno"] . "' >Ver alunos</button>
                 </form>
-                <form action='' method='post'>
-                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"]  . "'>Excluir</button> 
+                <form action='' method='get'>
+                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"].$row["turno"] ."'>Excluir</button> 
               </form>
              </div>
                 ";
@@ -42,33 +34,27 @@ function Exibir_tutores(){
     }
 }
 
-if (isset($_POST["excluir"])) {
+if (isset($_GET["excluir"])) {
     
     $consulta = query("SELECT * FROM tutoria");
-    $botaoclicado = $_POST["excluir"];
+    $botaoclicado = $_GET["excluir"];
     foreach ($consulta as $row) {
-        if ($botaoclicado == "excluir-" . $row["nome_professor"]) {
+        if ($botaoclicado == "excluir-" . $row["nome_professor"].$row["turno"]) {
 
-            if($row["turno"] == "INTERMEDIÁRIO"){
-                $nome_professor = str_replace("INT_","",$row["nome_professor"]);
-                $nome_tabela_tutoria = "tutoria_I_" . str_replace(" ","_",$nome_professor);
-            }else if($row["turno"]  == "VESPERTINO"){
-                $nome_professor = str_replace("VES_","",$row["nome_professor"]);
-                $nome_tabela_tutoria = "tutoria_V_" . str_replace(" ","_",$nome_professor);
-            }else{
-                $nome_professor = str_replace("NOT_","",$row["nome_professor"]);
-                $nome_tabela_tutoria = "tutoria_N_" . str_replace(" ","_",$nome_professor);
+            $turno = $row["turno"];
+            $nome_professor = $row["nome_professor"];
+
+            $consulta_excluir = query("SELECT * FROM todas_escolhas_tutoria WHERE nome_tutoria = '$nome_professor' AND turno = '$turno'");
+
+            foreach($consulta_excluir as $row_excluir){
+                $RA = $row_excluir["RA"];
+                $excluir_registro = query("DELETE FROM todas_escolhas_tutoria where RA = '$RA'");
             }
 
-            $nome_registro = $row["nome_professor"];
-
-            $exluir_registro = query("DELETE FROM tutoria WHERE nome_professor = '$nome_registro'");
+            $exluir_registro = query("DELETE FROM tutoria WHERE nome_professor = '$nome_professor' AND turno = '$turno'");
  
-            $excluir_tabela = query("DROP TABLE $nome_tabela_tutoria");
-
-
-            if ($excluir_tabela && $exluir_registro) {
-                echo "<script>mostrarPopup()</script>";
+            if ($exluir_registro) {
+                echo "<script>history.replaceState({},document.title,window.location.pathname)</script>";
             }
         }
     }
@@ -78,23 +64,11 @@ if(isset($_POST["tutores"])){
     $consulta = query("SELECT * FROM tutoria");
     $botaoclicado = $_POST["tutores"];
     foreach($consulta as $row){
-        if($botaoclicado == "escolher-" . $row["nome_professor"]){
-
-            if($row["turno"] == "INTERMEDIÁRIO"){
-                $prefixo_tabela = "tutoria_I_";
-                $prefixo = "INT_";
-            }else if ($row["turno"] == "VESPERTINO"){
-                $prefixo_tabela = "tutoria_V_";
-                $prefixo = "VES_";
-            }else{
-                $prefixo_tabela = "tutoria_N_";
-                $prefixo = "NOT_";
-            }
+        if($botaoclicado == "escolher-" . $row["nome_professor"].$row["turno"]){
 
             session_start();
-            $_SESSION["tutor"] = $prefixo_tabela . str_replace($prefixo,"",$row["nome_professor"]);
-            $_SESSION["prefixo_tabela"] = $prefixo_tabela;
-            $_SESSION["prefixo"] = $prefixo;
+            $_SESSION["tutor"] = $row["nome_professor"];
+            $_SESSION["turno"] = $row["turno"];
             header("location: tutorandos.php");
         }
     }
@@ -145,6 +119,11 @@ if(isset($_POST["tutores"])){
 
     <!-- Script JavaScript -->
     <script>
+
+setTimeout( function(){
+            location.reload()
+        },10000)
+        
     const botaoFecharPopup = document.getElementById('fechar-popup');
     const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
 

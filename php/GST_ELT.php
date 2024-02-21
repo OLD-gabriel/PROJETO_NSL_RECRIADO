@@ -10,22 +10,24 @@ function Exibir_eletivas()
             echo "                                                  
             <div class='eletivas'> 
             <h2>ELETIVA:</h2>  
-            <span class='nome-tutor'>" . str_replace($row["turno"] . "_","",$row["nome_eletiva"])  . " <br> </span>                     
+            <span class='nome-tutor'>" .  $row["nome_eletiva"]  . " <br> </span>                     
             <h2>Professores:</h2>  
-            <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_1"]) . "  </span>
-            <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_2"]) . "  </span>
-            <span class='nome-eletiva'>" . str_replace("_", " ", $row["professor_3"]) . "  </span>
+            <span class='nome-eletiva'>" . $row["professor_1"] . "  </span>
+            <span class='nome-eletiva'>" . $row["professor_2"] . "  </span>
+            <span class='nome-eletiva'>" . $row["professor_3"] . "  </span>
+            <h2>Curso da eletiva:</h2>  
+            <span class='nome-eletiva'>" .$row["curso"]. "  </span>
             <h2>Turno da eletiva:</h2>  
-            <span class='nome-eletiva'>" . str_replace("_", " ", $row["turno"]) . "  </span>
+            <span class='nome-eletiva'>" .$row["turno"]. "  </span>
             <span class'nome-eletiva'>
             <b>vagas:</b>
             " . $row["vagas"] . "
             </span>
             <form action='' method='post'>
-                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"] . "' > Ver alunos   </button> 
+                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"].$row["turno"] . "' >  alunos   </button> 
             </form> 
-            <form action='' method='post'>
-                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"] . "'>Excluir</button> 
+            <form action='' method='get'>
+                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"].$row["turno"] . "'>Excluir</button> 
             </form> 
     
                     </div>";
@@ -40,31 +42,26 @@ function Exibir_eletivas()
     }
 }
 
-if (isset($_POST["excluir"])) {
+if (isset($_GET["excluir"])) {
     $consulta = query("SELECT * FROM eletivas");
-    $botaoclicado = $_POST["excluir"];
+    $botaoclicado = $_GET["excluir"];
     foreach ($consulta as $row) {
-        if ($botaoclicado == "excluir-" . $row["nome_eletiva"]) {
+        if ($botaoclicado == "excluir-" . $row["nome_eletiva"].$row["turno"]) {
 
-            if($row["turno"] == "INTERMEDIÁRIO"){
-                $nome_eletiva = str_replace("INT_","",$row["nome_eletiva"]);
-                $nome_tabela_eletiva = "eletiva_I_" . str_replace(' ','_',$nome_eletiva);
-            }else if($row["turno"] == "VESPERTINO"){
-                $nome_eletiva = str_replace("VES_","",$row["nome_eletiva"]);
-                $nome_tabela_eletiva = "eletiva_V_" . str_replace(' ','_',$nome_eletiva);
-            }else{
-                $nome_eletiva = str_replace("NOT_","",$row["nome_eletiva"]);
-                $nome_tabela_eletiva = "eletiva_N_" . str_replace(' ','_',$nome_eletiva);
+            $turno = $row["turno"];
+            $nome_eletiva = $row["nome_eletiva"]; 
+
+            $consulta_excluir = query("SELECT * FROM todas_escolhas_eletiva WHERE nome_eletiva = '$nome_eletiva' AND turno = '$turno'");
+
+            foreach($consulta_excluir as $row_excluir){
+                $RA = $row_excluir["RA"];
+                $excluir_registro = query("DELETE FROM todas_escolhas_eletiva where RA = '$RA'");
             }
 
-            $nome_registro_eletiva = $row["nome_eletiva"]; 
-
-            $apagar_registro = query("DELETE FROM eletivas where nome_eletiva = '$nome_registro_eletiva'");
+            $apagar_registro = query("DELETE FROM eletivas where nome_eletiva = '$nome_eletiva' AND turno = '$turno' ");
             
-            $apagar_tabela = query("DROP TABLE " . $nome_tabela_eletiva);
-
-            if ($apagar_registro && $apagar_tabela) {
-                echo "<script>mostrarPopup()</script>";
+            if ($apagar_registro) {
+                echo "<script>history.replaceState({},document.title,window.location.pathname)</script>";
             }
         }
     }
@@ -74,21 +71,10 @@ if(isset($_POST["eletiva"])){
     $consulta = query("SELECT * FROM eletivas");
     $botaoclicado = $_POST["eletiva"];
     foreach($consulta as $row){
-        if($botaoclicado == "escolher-" . $row["nome_eletiva"]){
-            if($row["turno"] == "INTERMEDIÁRIO"){
-                $prefixo_tabela = "eletiva_I_";
-                $prefixo = "INT_";
-            }else if ($row["turno"] == "VESPERTINO"){
-                $prefixo_tabela = "eletiva_V_";
-                $prefixo = "VES_";
-            }else{
-                $prefixo_tabela = "eletiva_N_";
-                $prefixo = "NOT_";
-            }
+        if($botaoclicado == "escolher-" . $row["nome_eletiva"].$row["turno"]){
             session_start();
-            $_SESSION["eletiva"] = $prefixo_tabela . str_replace($prefixo,"",$row["nome_eletiva"]);
-            $_SESSION["prefixo_tabela"] = $prefixo_tabela;
-            $_SESSION["prefixo"] = $prefixo;
+            $_SESSION["eletiva"] = $row["nome_eletiva"];
+            $_SESSION["turno"] = $row["turno"];
             header("location: eletivandos.php");
         }
     }
@@ -141,6 +127,8 @@ if(isset($_POST["eletiva"])){
         function mostrarPopup() {
             sobreposicaoPopup.style.display = 'block';
         }
+
+        
 
         botaoFecharPopup.addEventListener('click', fecharPopup);
     </script>

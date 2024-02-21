@@ -2,21 +2,19 @@
 include 'database.php';
 
 session_start();
-$tutor = str_replace(" ","_",$_SESSION["tutor"]);
 
-$prefixo_tabela = $_SESSION["prefixo_tabela"];
-$prefixo = $_SESSION["prefixo"];
-$consulta = query("SELECT * FROM $tutor");
+$tutor = $_SESSION["tutor"];
+$turno = $_SESSION["turno"];
 
-$nome_registro = $prefixo . str_replace("_"," ",str_replace($prefixo_tabela,"",$tutor)); 
+$consulta = query("SELECT * FROM todas_escolhas_tutoria WHERE nome_tutoria = '$tutor' AND turno = '$turno' ");
+
 
 if(isset($_POST["excluir-registro"])){
     $ra = $_POST["excluir-registro"];
-    $deletar_tabela_tutoria = query(" DELETE FROM $tutor WHERE RA = '$ra' ");
 
     $deletar_tabela_todos = query(" DELETE FROM todas_escolhas_tutoria WHERE RA = '$ra'");
 
-    $atualizar_vagas = query("UPDATE tutoria SET vagas = vagas + 1 WHERE nome_professor = '$nome_registro'");
+    $atualizar_vagas = query("UPDATE tutoria SET vagas = vagas + 1 WHERE nome_professor = '$tutor' AND turno = '$turno' ");
     header("location: tutorandos.php");
 }
 ?>
@@ -62,8 +60,11 @@ if(isset($_POST["excluir-registro"])){
     <main class="main">
         <div class="alunos">
             <h1>Tutorando de
-                <?php echo str_replace($prefixo_tabela,"",$tutor) ?>
+                <?php echo $tutor ?>
             </h1>
+            <h3>
+                Turno: <br> <?php echo $turno ?>
+            </h3>
 
             <h2>Alunos</h2>
 

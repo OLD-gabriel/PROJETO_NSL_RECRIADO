@@ -2,22 +2,17 @@
 include 'database.php';
 
 session_start();
-$eletiva = str_replace(" ","_",$_SESSION["eletiva"]);
+$eletiva = $_SESSION["eletiva"];
+$turno = $_SESSION["turno"];
 
-$prefixo_tabela = $_SESSION["prefixo_tabela"];
-$prefixo = $_SESSION["prefixo"];
-
-$nome_registro = $prefixo . str_replace("_"," ",str_replace($prefixo_tabela,"",$eletiva));
-
-$consulta = query("SELECT * FROM $eletiva");
+$consulta = query("SELECT * FROM todas_escolhas_eletiva WHERE nome_eletiva = '$eletiva' AND turno = '$turno' ");
 
 if(isset($_POST["excluir-registro"])){
     $ra = $_POST["excluir-registro"];
-    $deletar_tabela_eletiva = query(" DELETE FROM $eletiva WHERE RA = '$ra' ");
 
     $deletar_tabela_todos = query(" DELETE FROM todas_escolhas_eletiva WHERE RA = '$ra'");
 
-    $atualizar_vagas = query("UPDATE eletivas SET vagas = vagas + 1 WHERE nome_eletiva = '$nome_registro'");
+    $atualizar_vagas = query("UPDATE eletivas SET vagas = vagas + 1 WHERE nome_eletiva = '$eletiva' AND turno = '$turno'");
 
     header("location: eletivandos.php");
 }
@@ -65,8 +60,11 @@ if(isset($_POST["excluir-registro"])){
     <main class="main">
         <div class="alunos">
             <h1>Alunos da eletiva <br>
-                <?php echo str_replace($prefixo_tabela,"",$eletiva) ?>
+                <?php echo $eletiva ?>
             </h1>
+            <h3>
+                Turno: <br> <?php echo $turno ?>
+            </h3>
 
             <h2>Alunos</h2>
 

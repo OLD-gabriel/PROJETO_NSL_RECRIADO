@@ -9,15 +9,6 @@ $curso_tec = $_SESSION['curso'];
 $nome_aluno = $_SESSION['nome'];
 $turno = $_SESSION["turno"];
 
-if($turno == "INTERMEDIÁRIO"){
-    $prefixo = "INT_";
-}else if ($turno == "VESPERTINO"){
-    $prefixo = "VES_";
-}else{
-    $prefixo = "NOT_";
-}
-
-
 function mostarTutorias(){
     global $turno;
     global $prefixo;
@@ -28,12 +19,12 @@ function mostarTutorias(){
                 echo "
                 <div class='tutores'>
                     <img src='../img/avatar.png' alt='' class=''>
-                    <span class='nome-tutor'>" . str_replace($prefixo, "", $row["nome_professor"]) . "<br>
+                    <span class='nome-tutor'>" . $row["nome_professor"]  . "<br>
                         vagas:
                         " . $row["vagas"] . "
                     </span>
                     <form action='' method='post'>
-                        <button type='submit' class='botao' name='tutores' value='escolher-" . $row["nome_professor"] . "' >Escolher</button>
+                        <button type='submit' class='botao' name='tutores' value='escolher-" . $row["nome_professor"].$row["turno"] . "' >Escolher</button>
                     </form>
                 </div>
             ";
@@ -41,7 +32,7 @@ function mostarTutorias(){
         }
     }    else {
         echo "  
-        <div class='nada'>
+        <div class='tutores'>
         <h1>SEM TUTORIAS!</h1> <br> 
     <span>peça algum gestor para adicionar Tutores </span>
     </div> 
@@ -55,30 +46,17 @@ if (isset($_POST["tutores"])) {
     if ($verificar_escolha->num_rows == 0) {
         $consulta = query("SELECT * FROM tutoria");
         foreach ($consulta as $row) {
-            if ($botaoclicado == "escolher-" . $row["nome_professor"]) {
+            if ($botaoclicado == "escolher-" . $row["nome_professor"].$row["turno"]) {
                 if ($row["vagas"] > 0) {
                    
+                    $nome_professor_registro = $row["nome_professor"];
                     $vagas = $row["vagas"] - 1;
-                    $nome_registro_tutoria = $row["nome_professor"];
-                    
-                    if($row["turno"] == "INTERMEDIÁRIO"){
-                        $nome_professor = str_replace("INT_","",$row["nome_professor"]);
-                        $nome_tabela_tutoria = "tutoria_I_" . str_replace(" ","_",$nome_professor);
-                    }else if($row["turno"]  == "VESPERTINO"){
-                        $nome_professor = str_replace("VES_","",$row["nome_professor"]);
-                        $nome_tabela_tutoria = "tutoria_V_" . str_replace(" ","_",$nome_professor);
-                    }else{
-                        $nome_professor = str_replace("NOT_","",$row["nome_professor"]);
-                        $nome_tabela_tutoria = "tutoria_N_" . str_replace(" ","_",$nome_professor);
-                    }
- 
-                   $atualizar_vagas = query("UPDATE tutoria SET vagas = '$vagas' WHERE nome_professor = '$nome_registro_tutoria'");
 
-                    $inserir_tabela_tutoria = query("INSERT INTO $nome_tabela_tutoria(nome_professor,RA,nome_aluno,serie_aluno) VALUES ('$nome_professor','$RA','$nome_aluno','$serie')");
+                   $atualizar_vagas = query("UPDATE tutoria SET vagas = '$vagas' WHERE nome_professor = '$nome_professor_registro' AND turno = '$turno'");
 
-                    $inserir_tabela_tudo = query("INSERT INTO todas_escolhas_tutoria (RA, nome_aluno, nome_tutoria, serie_aluno,turno) VALUES ('$RA', '$nome_aluno', '$nome_registro_tutoria', '$serie','$turno')");
+                    $inserir_tabela_tudo = query("INSERT INTO todas_escolhas_tutoria (RA, nome_aluno, nome_tutoria, serie_aluno,turno) VALUES ('$RA', '$nome_aluno', '$nome_professor_registro', '$serie','$turno')");
 
-                    if ($atualizar_vagas && $inserir_tabela_tudo && $inserir_tabela_tutoria) {
+                    if ($atualizar_vagas && $inserir_tabela_tudo) {
                         header("location: ?status=true");
                     }
                 } else {
@@ -90,6 +68,11 @@ if (isset($_POST["tutores"])) {
         header("location: ?status=jaEscolheu");
     }
 }
+
+$pegar_tutor = query("SELECT * FROM todas_escolhas_tutoria WHERE RA = '$RA' ");
+
+$tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -210,7 +193,7 @@ if (isset($_POST["tutores"])) {
         a {
             color: black;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             text-align: justify;
         }
     </style>
@@ -230,7 +213,15 @@ if (isset($_POST["tutores"])) {
             <img src="../img/Imagem1.svg" alt="" class="user">
         </div>
     </header>
-    <h1 class="title-eletiva">TUTORIAS do TURNO: <?php echo " {$turno}" ;?></h1>
+    <h3 class="title-eletiva">TUTORIAS do TURNO: <?php echo " {$turno}" ;?></h3>
+<br>
+    <?php 
+        if(!empty($tutor_selecionado)){
+            echo "<h3 class='title-eletiva' > Você escolheu o tutor {$tutor_selecionado["nome_tutoria"]} </h3>" ;
+        }else{
+            echo "<h3 class='title-eletiva'> Você ainda não escolheu seu tutor. </h3>" ;
+        }
+    ?>
 
     <main class="tutor">
         <?php
@@ -251,8 +242,8 @@ if (isset($_POST["tutores"])) {
     <!-- Pop-up -->
     <div id="sobreposicao-popup2">
         <div id="conteudo-popup">
-            <h2 style="padding:5px;">Erro!</h2>
-            <p>Ocorreu um erro ao inserir registro! <br><br> Talvez você já tenha selecionado o tutor! <br> </p>
+        <h2 style="padding:5px;">Tutoria já escolhida!</h2> <br>
+            <p>Você escolheu o Tutor <?php echo $tutor_selecionado["nome_tutoria"] ?><br> </p>
             <div class="botoes">
                 <button id="fechar-popup2" onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
             </div>
@@ -262,7 +253,7 @@ if (isset($_POST["tutores"])) {
     <!-- Pop-up -->
     <div id="sobreposicao-popup3">
         <div id="conteudo-popup">
-            <h2 style="padding:5px;">Erro!</h2>
+            <h2 style="padding:5px;">Sem vagas!</h2>
             <p>Esse tutor atingiu o limite de vagas! <br> </p>
             <div class="botoes">
                 <button id="fechar-popup3" onclick="fecharPopup('sobreposicao-popup3')">Fechar</button>
