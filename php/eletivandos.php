@@ -7,7 +7,7 @@ $turno = $_SESSION["turno"];
 
 $consulta = query("SELECT * FROM todas_escolhas_eletiva WHERE nome_eletiva = '$eletiva' AND turno = '$turno' ");
 
-if(isset($_POST["excluir-registro"])){
+if (isset($_POST["excluir-registro"])) {
     $ra = $_POST["excluir-registro"];
 
     $deletar_tabela_todos = query(" DELETE FROM todas_escolhas_eletiva WHERE RA = '$ra'");
@@ -35,9 +35,9 @@ if(isset($_POST["excluir-registro"])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
     <style>
-    td {
-        padding: 2px 1.5vw;
-    }
+        td {
+            padding: 2px 1.5vw;
+        }
     </style>
 </head>
 
@@ -69,29 +69,33 @@ if(isset($_POST["excluir-registro"])){
             <h2>Alunos</h2>
 
             <?php
-      echo "<table class='teste'>";
-      echo "<tr><th>Nome do Aluno</th><th>Série</th><th>RA</th></tr>";
+            echo "<table class='teste'>";
+            echo "<tr><th>Nome do Aluno</th><th>Série</th><th>RA</th></tr>";
 
-      // Loop através dos resultados e exiba cada linha na tabela
+            // Loop através dos resultados e exiba cada linha na tabela
 
-      foreach($consulta as $row) {
-        echo "<tr>";
+            foreach ($consulta as $row) {
+                echo "<tr>";
 
-        echo "<td>" .   $row["nome_aluno"] . "</td>";
-        echo "<td>" . $row["serie_aluno"] . "</td>";
-        echo "<td>" . $row["RA"] . "</td>";
-        echo "<td>" . "<form method='post'> <button type='submit' class='excluir-registro' name='excluir-registro' value='" . $row["RA"] . "  ' >Excluir</button> </form> " . "</td>";
-        echo "</tr>";
-        echo "<tr><td colspan='4'><hr></td></tr>"; // Adicione uma linha horizontal após cada linha de dados
-      }
+                echo "<td>" .   $row["nome_aluno"] . "</td>";
+                echo "<td>" . $row["serie_aluno"] . "</td>";
+                echo "<td>" . $row["RA"] . "</td>";
+                echo "<td>" . "<form method='post'> <button type='submit' class='excluir-registro' name='excluir-registro' value='" . $row["RA"] . "  ' >Excluir</button> </form> " . "</td>";
+                echo "</tr>";
+                echo "<tr><td colspan='4'><hr></td></tr>"; // Adicione uma linha horizontal após cada linha de dados
+            }
 
-      echo "</table>";
-      ?>
+            echo "</table>";
+            ?>
 
             <button class="export" onclick="exportToExcel()">Exportar para Excel</button>
         </div>
-
-        <script>
+    </main>
+    <center>
+        <br><br>
+        <a  href="GST_ELT.php" class="btn-submit">Voltar</a>
+    </center>
+    <script>
         function exportToExcel() {
 
             var table = XLSX.utils.table_to_sheet(document.querySelector('table'));
@@ -101,8 +105,8 @@ if(isset($_POST["excluir-registro"])){
 
             XLSX.writeFile(wb, 'dados_alunos.xlsx');
         }
-        </script>
-    </main>
+    </script>
+
 
     <footer>
         <div class="creditos">
@@ -136,7 +140,7 @@ if(isset($_POST["excluir-registro"])){
         </div>
         <hr class="linha-horizontal">
         <div class="informacoes-escola">
-            
+
             <div class="instagram-links">
 
                 <div class="tecnico-sala">

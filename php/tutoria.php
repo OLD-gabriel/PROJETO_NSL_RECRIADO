@@ -261,6 +261,10 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
         </div>
     </div>
 
+    <center>
+        <button class="botao" onclick="window.location.href = '../html/Tutoria-Eletiva.html' " >Voltar</button>
+    </center>
+    
     <script>
 
         setTimeout(function() {

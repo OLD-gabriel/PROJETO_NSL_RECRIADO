@@ -168,7 +168,9 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
                 <button id="fechar-popup3"  onclick="fecharPopup('sobreposicao-popup3')" >Fechar</button>
         </div>
     </div>
-
+    <center>
+        <button class="botao" onclick="window.location.href = '../html/Tutoria-Eletiva.html' " >Voltar</button>
+    </center>
     <script>
 
         setTimeout(function(){

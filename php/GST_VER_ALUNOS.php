@@ -119,7 +119,10 @@
             ?>
         </div>
     </main>
-
+    <center>
+                <br><br>
+        <a  href="../html/pag_gestor.html" class="btn-submit">Voltar</a>
+    </center>
     <footer>
         <div class="creditos">
             <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"

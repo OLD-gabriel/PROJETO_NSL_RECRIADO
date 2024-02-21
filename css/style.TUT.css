@@ -97,15 +97,16 @@ button {
 }
 
 .botao {
+  border: none;
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
   text-align: center;
-  display: block;
-  padding: 10px 15px;
   background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  font-size: 1.3rem;
-  border: 1px solid #ffbb01;
-  border-radius: 8px;
-  box-shadow: none;
-  font-weight: 500;
+  border-radius: 5px;
+  font-size: 22px;
+  border: 2px solid rgb(252, 122, 0);
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
 }
 
 .botao:hover {

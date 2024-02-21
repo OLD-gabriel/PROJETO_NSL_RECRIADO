@@ -182,6 +182,11 @@ if (isset($_POST["enviar"])) {
 
              </div>
          </div>
+        <center>
+            <br><br>
+         <a  href="../html/pag_gestor.html" class="btn-submit">Voltar</a>
+        </center>
+
          <!-- Script JavaScript -->
          <script>
          const botaoFecharPopup = document.getElementById('fechar-popup');

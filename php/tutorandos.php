@@ -9,7 +9,7 @@ $turno = $_SESSION["turno"];
 $consulta = query("SELECT * FROM todas_escolhas_tutoria WHERE nome_tutoria = '$tutor' AND turno = '$turno' ");
 
 
-if(isset($_POST["excluir-registro"])){
+if (isset($_POST["excluir-registro"])) {
     $ra = $_POST["excluir-registro"];
 
     $deletar_tabela_todos = query(" DELETE FROM todas_escolhas_tutoria WHERE RA = '$ra'");
@@ -36,9 +36,9 @@ if(isset($_POST["excluir-registro"])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
     <style>
-    td {
-        padding: 2px 1.5vw;
-    }
+        td {
+            padding: 2px 1.5vw;
+        }
     </style>
 </head>
 
@@ -74,7 +74,7 @@ if(isset($_POST["excluir-registro"])){
             echo "<tr><th>Nome do Aluno</th><th>Série</th><th>RA</th></tr>";
             $vagas = 0;
             // Loop através dos resultados e exiba cada linha na tabela
-           foreach($consulta as $row) {
+            foreach ($consulta as $row) {
                 echo "<tr><td>" . $row["nome_aluno"] . "</td><td>" . $row["serie_aluno"] . "</td><td>" . $row["RA"] . "</td><td>" . "<form method='post'> <button type='submit' class='excluir-registro' name='excluir-registro' value='" . $row["RA"] . "  ' >Excluir</button> </form> " . "</td></tr>";
                 echo "<tr><td colspan='4'><hr></td></tr>";
             }
@@ -93,9 +93,13 @@ if(isset($_POST["excluir-registro"])){
                 <button id="fechar-popup">Fechar</button>
             </div>
         </div>
-
-        <!-- Script JavaScript -->
-        <script>
+    </main>
+    <center>
+        <br><br>
+        <a  href="GST_TUT.php" class="btn-submit">Voltar</a>
+    </center>
+    <!-- Script JavaScript -->
+    <script>
         const botaoFecharPopup = document.getElementById('fechar-popup');
         const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
 
@@ -118,9 +122,9 @@ if(isset($_POST["excluir-registro"])){
 
             XLSX.writeFile(wb, 'dados_alunos.xlsx');
         }
-        </script>
-    </main>
- 
+    </script>
+
+
     <footer>
         <div class="creditos">
             <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
@@ -153,7 +157,7 @@ if(isset($_POST["excluir-registro"])){
         </div>
         <hr class="linha-horizontal">
         <div class="informacoes-escola">
-            
+
             <div class="instagram-links">
 
                 <div class="tecnico-sala">

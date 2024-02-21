@@ -156,6 +156,9 @@ if(isset($_POST["eletiva"])){
     <?php
   
     ?>
+    <center>
+        <button class="botao" onclick="window.location.href = '../html/pag_gestor.html'" >Voltar</button>
+</center>
 
 <footer>
         <div class="creditos">

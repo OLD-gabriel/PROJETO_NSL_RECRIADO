@@ -117,7 +117,8 @@ if(isset($_POST["tutores"])){
         </div>
     </div>
 
-    <!-- Script JavaScript -->
+
+
     <script>
 
 setTimeout( function(){
@@ -144,7 +145,10 @@ setTimeout( function(){
         Exibir_tutores();
         ?>
     </main>
- 
+ <br>
+    <center>
+        <a  href="../html/pag_gestor.html" class="btn-submit">Voltar</a>
+    </center>
 
     <footer>
         <div class="creditos">

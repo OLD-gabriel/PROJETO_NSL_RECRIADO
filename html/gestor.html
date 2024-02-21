@@ -171,17 +171,17 @@
       <form action="../php/processar-gestor.php" method="post" class="main-form">
         <label for="" class="main-label">
           Senha:
-          <input type="password" name="senha" placeholder="000-000" class="main-input" required>
+          <input type="password" name="senha" id="senha" placeholder="000-000" class="main-input" required>
           <img src="../img/icons8-lock-30.png" alt="">
         </label>
-
+      
         <div>
-          <label><input type="checkbox">Mostra Senha</label>
-          </label>
+          <label><input type="checkbox" id="mostrarSenha"> Mostrar Senha</label>
         </div>
-
+      
         <button type="submit" name="enviar" class="botao">ENTRAR</button>
       </form>
+      
     </div>
   </main>
   <!-- Pop-up -->
@@ -195,7 +195,16 @@
 
   <!-- Script JavaScript -->
   <script>
-
+    
+    document.getElementById('mostrarSenha').addEventListener('change', function() {
+      var senhaInput = document.getElementById('senha');
+      if (this.checked) {
+        senhaInput.type = 'text';
+      } else {
+        senhaInput.type = 'password';
+      }
+    });
+    
     const param = new URLSearchParams(window.location.search)
     const verif = param.get("status")
 
