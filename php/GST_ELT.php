@@ -16,7 +16,7 @@ function Exibir_eletivas()
             <span class='nome-eletiva'>" . $row["professor_2"] . "  </span>
             <span class='nome-eletiva'>" . $row["professor_3"] . "  </span>
             <h2>Curso da eletiva:</h2>  
-            <span class='nome-eletiva'>" .$row["curso"]. "  </span>
+            <span class='nome-eletiva'>" . str_replace(" ","<br>",$row["curso"]) . "  </span>
             <h2>Turno da eletiva:</h2>  
             <span class='nome-eletiva'>" .$row["turno"]. "  </span>
             <span class'nome-eletiva'>

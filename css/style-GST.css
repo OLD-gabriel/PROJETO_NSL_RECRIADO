@@ -352,13 +352,13 @@ a{
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226); 
 }
 
-.main-box-add-form input{
+.main-box-add-form input[type="number"],input[type="text"],input[type="submit"],input[type="reset"]{
   min-width: 100px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.main-box-add input{
+.main-box-add input[type="number"],input[type="text"],input[type="submit"],input[type="reset"]{
   min-width: 100px;
   margin-top: 10px;
   margin-bottom: 10px;

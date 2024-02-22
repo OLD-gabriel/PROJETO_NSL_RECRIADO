@@ -19,7 +19,8 @@ function mostarEletivas()
         foreach ($consulta as $row) {
            
             if($row["turno"] == $turno){
-                if ($row["curso"] == $curso_tec) {
+                    // STRPOS função para verificar se uam determinada palvra está em uma frase ou string
+                if (strpos($row["curso"],$curso_tec) || $row["curso"] == $curso_tec ) {
                     echo "
                             <div class='eletivas'> 
                                 <h2>ELETIVA:</h2>  
@@ -27,7 +28,7 @@ function mostarEletivas()
                                 <h2>Professores:</h2>             <span class='nome-eletiva'>" . $row["professor_1"] . " <br> </span>
                                 <span class='nome-eletiva'>" . $row["professor_2"] . " <br> </span>
                                 <span class='nome-eletiva'>" . $row["professor_3"] . " <br> </span>
-                                <h2>Curso:</h2>           <span class='nome-eletiva'>" . $row["curso"] . " <br> </span>
+                               
                                 <span class='nome-eletiva'>
                                     <b>vagas:</b>
                                     " . $row["vagas"] . " 
