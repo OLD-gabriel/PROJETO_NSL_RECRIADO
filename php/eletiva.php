@@ -3,6 +3,11 @@ include 'database.php';
 
 session_start();
 
+if(!isset($_SESSION["RA"])){
+    header("location: ../index.html");
+    exit();
+}
+
 $RA = $_SESSION['RA'];
 $serie = $_SESSION['serie'];
 $curso_tec = $_SESSION['curso'];
@@ -165,7 +170,7 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
         </div>
     </div>
     <center>
-        <button class="botao" onclick="window.location.href = '../html/Tutoria-Eletiva.html' ">Voltar</button>
+        <button class="botao" onclick="window.location.href = 'Tutoria-Eletiva.php' ">Voltar</button>
     </center>
     <script>
         setTimeout(function() {

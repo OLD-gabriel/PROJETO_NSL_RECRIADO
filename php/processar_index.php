@@ -20,7 +20,7 @@ if($consulta){
         $_SESSION["serie"] = $serie;
         $_SESSION["curso"] = $curso;
         $_SESSION["turno"] = $turno;
-        header("location: ../html/Tutoria-Eletiva.html");
+        header("location: Tutoria-Eletiva.php");
     }else{
         header("location: ../index.html?status=false");
     }

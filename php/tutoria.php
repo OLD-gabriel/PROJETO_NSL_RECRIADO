@@ -3,6 +3,11 @@ include 'database.php';
 
 session_start();
 
+if(!isset($_SESSION["RA"])){
+    header("location: ../index.html");
+    exit();
+}
+
 $RA = $_SESSION['RA'];
 $serie = $_SESSION['serie'];
 $curso_tec = $_SESSION['curso'];
@@ -106,13 +111,12 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
         </div>
         <?php
     if (!empty($tutor_selecionado)) {
-        echo "<h3 class='title-eletiva' > Você escolheu o tutor {$tutor_selecionado["nome_tutoria"]} </h3>";
+        echo "<h3 class='title-eletiva' > Você escolheu o tutor(a) {$tutor_selecionado["nome_tutoria"]} </h3>";
     } else {
         echo "<h3 class='title-eletiva'> Você ainda não escolheu seu tutor. </h3>";
     }
     ?>
     </header>
-    <!-- <h3 class="title-eletiva">TUTORIAS do TURNO: <?php echo " {$turno}"; ?></h3> -->
     <br>
     
 
@@ -136,7 +140,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     <div id="sobreposicao-popup2" class="sobreposicao-popup">
         <div id="conteudo-popup" class="conteudo-popup">
             <h2 style="padding:5px;">Tutoria já escolhida!</h2> <br>
-            <p>Você escolheu o Tutor <?php echo $tutor_selecionado["nome_tutoria"] ?><br> </p>
+            <p>Você escolheu o Tutor(a) <?php echo $tutor_selecionado["nome_tutoria"] ?><br> </p>
             <div class="botoes">
                 <button class="fechar-popup" id="fechar-popup2" onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
             </div>
@@ -155,7 +159,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     </div>
 
     <center>
-        <button class="botao" onclick="window.location.href = '../html/Tutoria-Eletiva.html' ">Voltar</button>
+        <button class="botao" onclick="window.location.href = 'Tutoria-Eletiva.php' ">Voltar</button>
     </center>
 
     <script>

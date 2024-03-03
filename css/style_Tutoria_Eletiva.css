@@ -21,8 +21,25 @@
     max-width: 100%;
   }
   
-  /* main */ 
+  .caixas{  
+    display:flex;
+    justify-content: center;
+  }
 
+  .status{
+    background-color: #ffffff54; 
+    margin: 10px 10px;
+    min-width: 350px;
+    max-width: 500px;
+    border-radius: 7px;
+    padding: 20px;
+  }
+
+  /* main */ 
+  .nome{
+    font-size: 15px;
+    color: white;
+  }
   .btn-sair {
     height: 50px; 
     padding: 10px 30px;
@@ -109,7 +126,7 @@
       display: none;
     }
   
-    .header .nome{
+    .header {
       font-size: 1.2rem;
     }
       
@@ -240,7 +257,7 @@
     height: 60px;
   }
   
-  .header .nome{
+  .header {
     font-size: 1.5rem;
     color: #e0e0e0;
     text-align: right;
@@ -256,7 +273,7 @@
       display: none;
     }
   
-    .header .nome{
+    .header{
       font-size: 1.2rem;
     }
   
@@ -380,7 +397,7 @@
             animation: 2s animateLeft linear -1s infinite;
   }
   
-  @keyframes animateLeft {z
+  @keyframes animateLeft {
     0% {
       -webkit-transform: translateY(-100%);
               transform: translateY(-100%);

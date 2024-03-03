@@ -85,12 +85,11 @@ text-align: center;
 .user {
   width: 110px;
   height: 60px;
-}
+} 
 .nome{
-  text-align:left ;
-  font-size: 15px;
+  color: white;
 }
-.header .nome {
+.header  {
   font-size: 1.5rem;
   color: #e0e0e0;
 }

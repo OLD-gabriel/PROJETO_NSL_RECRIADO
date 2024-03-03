@@ -12,6 +12,18 @@ function query($str){
 
 // OBS: só pode ter uma coluna como 'auto_increment' na tabela, e ela deve ser primary key
 
+$create_table = query("CREATE TABLE IF NOT EXISTS status_eletiva_tutoria(
+    eletiva varchar(255),
+    tutoria varchar(255)
+)default charset utf8;
+");
+
+$buscar_valor = query("SELECT * FROM status_eletiva_tutoria");
+ 
+if($buscar_valor->num_rows == 0){   
+    $inserir_dados_status = query("INSERT INTO status_eletiva_tutoria(eletiva,tutoria) VALUES ('ATIVADO','ATIVADO')");
+}
+
 $create_table = query("CREATE TABLE IF NOT EXISTS todas_escolhas_eletiva(
     RA int,
     nome_aluno varchar(255),
