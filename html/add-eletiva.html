@@ -2,64 +2,21 @@
 <html lang="pt-br">
 
     <head>
-        <!-- Metadados do documento -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Título e ícone da página -->
-        <title>Gestor | Nsl</title>
+        <title>Adicionar Eletiva | Nsl</title>
         <link rel="shortcut icon" href="../img/favicon (3).ico"
             type="image/x-icon">
 
-        <!-- Estilos CSS -->
-        <link rel="stylesheet" href="../css/style-GST.css">
+        <link rel="stylesheet" href="../css/style_AdEletiva.css">
 
-        <!-- Fontes Google -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
             rel="stylesheet">
-
-        <!-- Estilo personalizado -->
-        <style>
-    p {
-        background-color: #cccccc81;
-        padding: 10px;
-        border-radius: 6px;
-        font-weight: bold;
-        text-align: center;
-    }
-    .turnos{
-         text-align: center;
-    }
-    #sobreposicao-popup2 {
-        display: none;
-        /* Inicialmente oculto */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-      input[type="checkbox"]{
-        margin: 10px;
-        width: 20px;
-        height: 20px;
-        padding: 0px;
-        border: none;
-      }
-      .label-checkbox{
-        margin-bottom: 100px;
-        font-size: 20px;
-      }
-      .selecionar-cursos input[type="checkbox"],
-      .selecionar-cursos span.label-checkbox {
-          vertical-align: middle;
-      }
-    </style>
 
     </head>
 
@@ -84,15 +41,10 @@
             <form action="../php/processar_add_eletiva.php" method="post"
                 class="main-box-add-form">
 
-                <!-- Informações sobre a inserção -->
-                <p>não use acentuação, e não use "_" em nenhum campo para evitar
-                    conflito interno!</p>
-
-                <!-- Campos do formulário -->
                 <label class="form-label" for="nome-eletiva">Digite o nome da
                     Eletiva:</label>
                 <input type="text" required id="nome-eletiva"
-                    name="nome-eletiva" maxlength="53" class="campos">
+                    name="nome-eletiva" maxlength="250" class="campos">
 
                 <label class="form-label" for="1-nome">Digite o 1º nome do
                     Professor:</label>
@@ -134,18 +86,19 @@
 
                 <div class="selecionar-cursos">
                     <input type="checkbox" class="seleção" name="curso[]"
-                    value="INFORMÁTICA"> <span
-                    class="label-checkbox">INFORMÁTICA </span> <br>
-                <input type="checkbox" class="seleção" name="curso[]"
-                    value="ADMINISTRAÇÃO"><span
-                    class="label-checkbox">ADMINISTRAÇÃO</span> <br>
-                <input type="checkbox" class="seleção" name="curso[]"
-                    value="HUMANIDADES"> <span
-                    class="label-checkbox">HUMANIDADES </span><br>
-                <input type="checkbox" class="seleção" name="curso[]"
-                    value="EJA"> <span class="label-checkbox">EJA </span> <br>
+                        value="INFORMÁTICA"> <span
+                        class="label-checkbox">INFORMÁTICA </span> <br>
+                    <input type="checkbox" class="seleção" name="curso[]"
+                        value="ADMINISTRAÇÃO"><span
+                        class="label-checkbox">ADMINISTRAÇÃO</span> <br>
+                    <input type="checkbox" class="seleção" name="curso[]"
+                        value="HUMANIDADES"> <span
+                        class="label-checkbox">HUMANIDADES </span><br>
+                    <input type="checkbox" class="seleção" name="curso[]"
+                        value="EJA"> <span class="label-checkbox">EJA </span>
+                    <br>
                 </div>
-                
+
                 <br><br>
 
                 <div class="botoes">
@@ -157,20 +110,20 @@
         </div>
 
         <!-- Pop-up -->
-        <div id="sobreposicao-popup">
-            <div id="conteudo-popup">
+        <div id="sobreposicao-popup" class="sobreposicao-popup">
+            <div id="conteudo-popup" class="conteudo-popup">
                 <h2>Sucess</h2>
                 <p> Eletiva inserida com <br> sucesso!</p>
-                <button id="fechar-popup"
+                <button id="fechar-popup" class="fechar-popup"
                     onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
             </div>
         </div>
 
-        <div id="sobreposicao-popup2">
-            <div id="conteudo-popup">
+        <div id="sobreposicao-popup2" class="sobreposicao-popup">
+            <div id="conteudo-popup" class="conteudo-popup">
                 <h2>ERROR!</h2>
                 <p> ESSA ELETIVA JÁ EXISTE!</p>
-                <button id="fechar-popup"
+                <button id="fechar-popup" class="fechar-popup"
                     onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
             </div>
         </div>
@@ -205,7 +158,7 @@
         <footer>
             <div class="creditos">
                 <p class="projeto-info">Projeto realizado pelos alunos de Altas
-                    Habilidades da escola "EEEM Nossa Senhora"
+                    Habilidades da escola "EEEM Nossa Senhora de Lourdes"
                 </p>
                 <p class="supervisao-info">Supervisionado pelos professores Alex
                     Menezes & Vânia Alves</p>
@@ -238,24 +191,6 @@
             <hr class="linha-horizontal">
             <div class="informacoes-escola">
 
-                <div class="instagram-links">
-
-                    <div class="tecnico-sala">
-                        <img src="../img/logo_sala.png" alt="Logo Sala"
-                            class="logo-sala">
-                        <a href="https://www.instagram.com/2.tecnico_nsl/"
-                            target="_blank" class="link-tecnico">Técnico</a>
-
-                    </div>
-                    <div class="escola-insta">
-                        <img src="../img/instagram.png" alt="Instagram"
-                            class="logo-instagram">
-                        <a href="https://www.instagram.com/nslescola/"
-                            target="_blank" class="link-escola">Escola</a>
-
-                    </div>
-
-                </div>
             </div>
         </footer>
     </body>

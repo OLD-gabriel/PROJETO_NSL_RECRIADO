@@ -16,18 +16,18 @@ function Exibir_eletivas()
             <span class='nome-eletiva'>" . $row["professor_2"] . "  </span>
             <span class='nome-eletiva'>" . $row["professor_3"] . "  </span>
             <h2>Curso da eletiva:</h2>  
-            <span class='nome-eletiva'>" . str_replace(" ","<br>",$row["curso"]) . "  </span>
+            <span class='nome-eletiva'>" . str_replace(" ", "<br>", $row["curso"]) . "  </span>
             <h2>Turno da eletiva:</h2>  
-            <span class='nome-eletiva'>" .$row["turno"]. "  </span>
+            <span class='nome-eletiva'>" . $row["turno"] . "  </span>
             <span class'nome-eletiva'>
             <b>vagas:</b>
             " . $row["vagas"] . "
             </span>
             <form action='' method='post'>
-                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"].$row["turno"] . "' >  alunos   </button> 
+                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"] . $row["turno"] . "' >  alunos   </button> 
             </form> 
             <form action='' method='get'>
-                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"].$row["turno"] . "'>Excluir</button> 
+                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"] . $row["turno"] . "'>Excluir</button> 
             </form> 
     
                     </div>";
@@ -46,39 +46,38 @@ if (isset($_GET["excluir"])) {
     $consulta = query("SELECT * FROM eletivas");
     $botaoclicado = $_GET["excluir"];
     foreach ($consulta as $row) {
-        if ($botaoclicado == "excluir-" . $row["nome_eletiva"].$row["turno"]) {
+        if ($botaoclicado == "excluir-" . $row["nome_eletiva"] . $row["turno"]) {
 
             $turno = $row["turno"];
-            $nome_eletiva = $row["nome_eletiva"]; 
+            $nome_eletiva = $row["nome_eletiva"];
 
             $consulta_excluir = query("SELECT * FROM todas_escolhas_eletiva WHERE nome_eletiva = '$nome_eletiva' AND turno = '$turno'");
 
-            foreach($consulta_excluir as $row_excluir){
+            foreach ($consulta_excluir as $row_excluir) {
                 $RA = $row_excluir["RA"];
                 $excluir_registro = query("DELETE FROM todas_escolhas_eletiva where RA = '$RA'");
             }
 
             $apagar_registro = query("DELETE FROM eletivas where nome_eletiva = '$nome_eletiva' AND turno = '$turno' ");
-            
+
             if ($apagar_registro) {
                 echo "<script>history.replaceState({},document.title,window.location.pathname)</script>";
             }
         }
     }
- }
+}
 
-if(isset($_POST["eletiva"])){
+if (isset($_POST["eletiva"])) {
     $consulta = query("SELECT * FROM eletivas");
     $botaoclicado = $_POST["eletiva"];
-    foreach($consulta as $row){
-        if($botaoclicado == "escolher-" . $row["nome_eletiva"].$row["turno"]){
+    foreach ($consulta as $row) {
+        if ($botaoclicado == "escolher-" . $row["nome_eletiva"] . $row["turno"]) {
             session_start();
             $_SESSION["eletiva"] = $row["nome_eletiva"];
             $_SESSION["turno"] = $row["turno"];
             header("location: eletivandos.php");
         }
     }
-
 }
 
 ?>
@@ -90,10 +89,9 @@ if(isset($_POST["eletiva"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gestor | Nsl</title>
+    <title>Eletivas | Nsl</title>
     <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="../css/style.ELET.css">
+    <link rel="stylesheet" href="../css/style_GstEletiva.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,20 +100,19 @@ if(isset($_POST["eletiva"])){
 
 <body>
     <!-- Pop-up -->
-    <div id='sobreposicao-popup'>
-        <div id='conteudo-popup'>
+    <div id='sobreposicao-popup' class="sobreposicao-popup">
+        <div id='conteudo-popup' class="conteudo-popup">
             <h2>Sucess</h2>
             <p> Eletiva Excluida com <br> sucesso!</p>
-            <button id='fechar-popup'>Fechar</button>
+            <button id='fechar-popup' class="fechar-popup">Fechar</button>
         </div>
     </div>
 
     <!-- Script JavaScript -->
     <script>
-
-        setTimeout( function(){
+        setTimeout(function() {
             location.reload()
-        },10000)
+        }, 10000)
 
         const botaoFecharPopup = document.getElementById('fechar-popup');
         const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
@@ -128,7 +125,7 @@ if(isset($_POST["eletiva"])){
             sobreposicaoPopup.style.display = 'block';
         }
 
-        
+
 
         botaoFecharPopup.addEventListener('click', fecharPopup);
     </script>
@@ -154,15 +151,15 @@ if(isset($_POST["eletiva"])){
     </main>
 
     <?php
-  
+
     ?>
     <center>
-        <button class="botao" onclick="window.location.href = '../html/pag_gestor.html'" >Voltar</button>
-</center>
+        <button class="botao" onclick="window.location.href = '../html/pag_gestor.html'">Voltar</button>
+    </center>
 
-<footer>
+    <footer>
         <div class="creditos">
-            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
+            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora de Lourdes"
             </p>
             <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
 
@@ -192,21 +189,8 @@ if(isset($_POST["eletiva"])){
         </div>
         <hr class="linha-horizontal">
         <div class="informacoes-escola">
-            
-            <div class="instagram-links">
 
-                <div class="tecnico-sala">
-                    <img src="../img/logo_sala.png" alt="Logo Sala" class="logo-sala">
-                    <a href="https://www.instagram.com/2.tecnico_nsl/" target="_blank" class="link-tecnico">Técnico</a>
 
-                </div>
-                <div class="escola-insta">
-                    <img src="../img/instagram.png" alt="Instagram" class="logo-instagram">
-                    <a href="https://www.instagram.com/nslescola/" target="_blank" class="link-escola">Escola</a>
-
-                </div>
-
-            </div>
         </div>
     </footer>
 

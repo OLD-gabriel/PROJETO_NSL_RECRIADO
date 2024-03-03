@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+body {
+  margin: 0px;
+  background: linear-gradient(170deg, rgb(122, 4, 4), #d3430a, #d48c05, #f28705, #f24405, #000000) fixed;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+/* Estilos do pop-up */
+.sobreposicao-popup {
+  display: none;
+  /* Inicialmente oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.conteudo-popup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fechar-popup {
+  border: none;
+  margin: auto;
+  width: 82px;
+  height: 40px;
+  font-weight: bold;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+
+
+.fechar-popup:hover {
+  border: 1px solid #d19900;
+  background-image: linear-gradient(to bottom, #ca8a00, #b85000);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+header{
+  background-color: #ffffff54;
+text-align: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 30px;
+}
+
+.header-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header-brazao,.brazao {
+  width: 70px;
+  height: 100px;
+}
+.user {
+  width: 110px;
+  height: 60px;
+}
+.nome{
+  text-align:left ;
+  font-size: 15px;
+}
+.header .nome {
+  font-size: 1.5rem;
+  color: #e0e0e0;
+}
+
+footer {
+  margin-top: 162px;
+  padding: 10px;
+  background-color: #161616;
+  text-align: center;
+  color: white;
+}
+
+
+.nomes-grupos {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.vertical {
+  height: 200px;
+  border-left: 2px solid;
+}
+
+.back {
+  width: 200px;
+
+}
+
+.front {
+  width: 200px;
+
+}
+
+.bd {
+  width: 200px;
+
+}
+
+.creditos {
+  margin-bottom: 10px;
+}
+
+.creditos p {
+  margin-bottom: 1px;
+}
+
+.informacoes-escola p {
+  margin-bottom: 7px;
+}
+
+.instagram-links {
+  display: flex;
+  margin: 0 auto;
+  width: 190px;
+
+}
+
+.tecnico-sala {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  width: 100px;
+
+}
+
+.escola-insta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  width: 90px;
+
+}
+
+.informacoes-escola img {
+  width: 20px;
+  margin: 0 5px;
+}
+
+.informacoes-escola a {
+  text-decoration: none;
+  color: #919191;
+  margin: 0 5px;
+}
+
+.linha-horizontal {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.btn-submit {
+  max-width: max-content;
+  margin: 0px 30px 0px 10px;
+  padding: 10px 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 3px solid #000000;
+  background-image: linear-gradient(to bottom, #e06c00, #ff0000);
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 3px #ffa601;
+}
+
+.btn-submit:hover {
+  background-image: linear-gradient(to bottom, #b65800, #8a0000);
+  transition: background-color 1s;
+}
+
+@media (max-width: 600px){
+  .header .user{
+    display: none;
+  }
+}

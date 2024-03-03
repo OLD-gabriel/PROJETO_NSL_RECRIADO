@@ -1,96 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-    <!-- Metadados do documento -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <!-- Metadados do documento -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Título e ícone da página -->
-    <title>Gestor | Nsl</title>
-    <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
+        <title>Adicionar Tutoria | Nsl</title>
+        <link rel="shortcut icon" href="../img/favicon (3).ico"
+            type="image/x-icon">
 
-    <!-- Estilos CSS -->
-    <link rel="stylesheet" href="../css/style-GST.css">
+        <link rel="stylesheet" href="../css/style_AdTutoria.css">
 
-    <!-- Fontes Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
+            rel="stylesheet">
 
-    <style>
-        select{
-            min-width: 100px;
-            width: 80%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 17px;
-            outline: none; 
-          
-          }
-          option{
-            font-size: 17px;
-          }
-          select:hover{
-            cursor: pointer;
-          }
-          .turnos{
-            text-align: center;
-          }
-          #sobreposicao-popup2 {
-            display: none;
-            /* Inicialmente oculto */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-          }
-          p{
-            background-color: #cccccc81;
-            padding: 10px;
-            text-align: center;
-            border-radius: 6px;
-            font-weight: bold;
-          }
-    </style>
+    </head>
 
-</head>
+    <body>
 
-<body>
-
-    <header class="header-bg">
-        <div class="header">
-            <img class="header-brazao" src="../img/Imagem3.png" alt="Brazao">
-            <div class="header-menu">
-                <a href="#" class="nome">
-                    ADMINISTRADOR
-                </a>
-                <img class="user" src="../img/Imagem1.svg" alt="User">
+        <header class="header-bg">
+            <div class="header">
+                <img class="header-brazao" src="../img/Imagem3.png"
+                    alt="Brazao">
+                <div class="header-menu">
+                    <a href="#" class="nome">
+                        ADMINISTRADOR
+                    </a>
+                    <img class="user" src="../img/Imagem1.svg" alt="User">
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Formulário de inserção de Tutoria -->
-    <div class="main-box-add">
-        <h2 class="titulo">Inserção de Tutoria</h2>
-        <form action="../php/processar_add_tutoria.php" method="post">
+        <!-- Formulário de inserção de Tutoria -->
+        <div class="main-box-add">
+            <h2 class="titulo">Inserção de Tutoria</h2>
+            <form action="../php/processar_add_tutoria.php" method="post">
 
-            <p>não use acentuação, e não use "_" em nenhum campo para evitar conflito interno!</p>
-            
-            <!-- Campos do formulário -->
-            <label for="1-nome">Digite o nome do Profissional:</label>
-            <input type="text" required id="1-nome"  maxlength="51"  class="nomes" name="nome">
+                <!-- Campos do formulário -->
+                <label for="1-nome">Digite o nome do Profissional:</label>
+                <input type="text" required id="1-nome" maxlength="200"
+                    class="nomes" name="nome">
 
-            <label for="vagas">Informe o numero de vagas</label>
-            <input type="number" class="N-vagas"  required name="vagas">
+                <label for="vagas">Informe o numero de vagas</label>
+                <input type="number" class="N-vagas" required name="vagas">
 
-            <div class="turnos">
-                <label for="turno">Selecione o turno da Tutoria:</label>
+                <div class="turnos">
+                    <label for="turno">Selecione o turno da Tutoria:</label>
                     <select name="turno" id="turno" required>
                         <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
                         <option value="VESPERTINO">VESPERTINO</option>
@@ -98,39 +58,41 @@
                     </select>
                 </div>
 
-            <br><br>
+                <br><br>
 
-            <!-- Botões de reset e submit -->
-            <div class="botoes">
-                <input type="reset">
-                <input type="submit" name="enviar">
+                <!-- Botões de reset e submit -->
+                <div class="botoes">
+                    <input type="reset">
+                    <input type="submit" name="enviar">
+                </div>
+            </form>
+        </div>
+
+        <!-- Pop-up -->
+        <div id="sobreposicao-popup" class="sobreposicao-popup">
+            <div id="conteudo-popup" class="conteudo-popup">
+                <h2>Sucess</h2>
+                <p> Tutoria inserida com <br> sucesso!</p>
+                <button id="fechar-popup" class="fechar-popup"
+                    onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
             </div>
-        </form>
-    </div>
-
-    <!-- Pop-up -->
-    <div id="sobreposicao-popup">
-        <div id="conteudo-popup">
-            <h2>Sucess</h2>
-            <p> Tutoria inserida com <br> sucesso!</p>
-            <button id="fechar-popup" onclick="fecharPopup('sobreposicao-popup')" >Fechar</button>
         </div>
-    </div>
 
-    <div id="sobreposicao-popup2">
-        <div id="conteudo-popup">
-            <h2>ERROR!</h2>
-            <p> ESSA TUTORIA JÁ EXISTE<br></p>
-            <button id="fechar-popup" onclick="fecharPopup('sobreposicao-popup2')" >Fechar</button>
+        <div id="sobreposicao-popup2" class="sobreposicao-popup">
+            <div id="conteudo-popup" class="conteudo-popup">
+                <h2>ERROR!</h2>
+                <p> ESSA TUTORIA JÁ EXISTE<br></p>
+                <button id="fechar-popup" class="fechar-popup"
+                    onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
+            </div>
         </div>
-    </div>
 
-    <center>
-        <a  href="pag_gestor.html" class="btn-submit">Voltar</a>
-    </center>
+        <center>
+            <a href="pag_gestor.html" class="btn-submit">Voltar</a>
+        </center>
 
-    <!-- Script JavaScript -->
-    <script>
+        <!-- Script JavaScript -->
+        <script>
         const param = new URLSearchParams(window.location.search)
         const verif = param.get("status")
     
@@ -151,57 +113,45 @@
         }
     </script>
 
+        <!-- Rodapé da página -->
+        <footer>
+            <div class="creditos">
+                <p class="projeto-info">Projeto realizado pelos alunos de Altas
+                    Habilidades da escola "EEEM Nossa Senhora de Lourdes"
+                </p>
+                <p class="supervisao-info">Supervisionado pelos professores Alex
+                    Menezes & Vânia Alves</p>
 
-    <!-- Rodapé da página -->
-    <footer>
-        <div class="creditos">
-            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
-            </p>
-            <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
+                <div class="nomes-grupos">
 
-            <div class="nomes-grupos">
+                    <div class="back">
+                        <h4>Backend<br> desenvolvido por:</h4>
+                        <p class="backend-info"> Gabriel <br>Cirqueira</p>
+                    </div>
+                    <div class="vertical"></div>
 
+                    <div class="bd">
+                        <h4>Banco de dados <br>desenvolvido por:</h4>
+                        <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus
+                            <br>Trindade</p>
 
-                <div class="back">
-                    <h4>Backend<br> desenvolvido por:</h4>
-                    <p class="backend-info"> Gabriel <br>Cirqueira</p>
-                </div>
-                <div class="vertical"></div>
+                    </div>
+                    <div class="vertical"></div>
 
-                <div class="bd">
-                    <h4>Banco de dados <br>desenvolvido por:</h4>
-                    <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus <br>Trindade</p>
+                    <div class="front">
+                        <h4>Frontend <br>desenvolvido por:</h4>
+                        <p class="frontend-info"> Guilherme<br> Vagmaker & <br>
+                            Arthur <br> Possino</p>
 
-                </div>
-                <div class="vertical"></div>
-
-                <div class="front">
-                    <h4>Frontend <br>desenvolvido por:</h4>
-                    <p class="frontend-info"> Guilherme<br> Vagmaker & <br> Arthur <br> Possino</p>
-
-                </div>
-            </div>
-
-        </div>
-        <hr class="linha-horizontal">
-        <div class="informacoes-escola">
-            
-            <div class="instagram-links">
-
-                <div class="tecnico-sala">
-                    <img src="../img/logo_sala.png" alt="Logo Sala" class="logo-sala">
-                    <a href="https://www.instagram.com/2.tecnico_nsl/" target="_blank" class="link-tecnico">Técnico</a>
-
-                </div>
-                <div class="escola-insta">
-                    <img src="../img/instagram.png" alt="Instagram" class="logo-instagram">
-                    <a href="https://www.instagram.com/nslescola/" target="_blank" class="link-escola">Escola</a>
-
+                    </div>
                 </div>
 
             </div>
-        </div>
-    </footer>
-</body>
+            <hr class="linha-horizontal">
+            <div class="informacoes-escola">
+
+            </div>
+        </footer>
+    </body>
 
 </html>

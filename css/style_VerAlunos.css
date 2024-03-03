@@ -1,0 +1,119 @@
+@import url("global.css");
+
+hr{
+    border: 1px solid black;
+   }
+  
+   
+  .alunos { 
+    background-color: rgba(255, 255, 255, 0.467);
+    padding: 15px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: auto;
+    text-align: center;
+    margin-left: auto;
+    font-family:'Poppins', sans-serif;
+    margin-right: auto;
+    margin-top: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.441); 
+  }
+  
+  .alunos h1{
+    font-size: 2rem;
+   font-family: 'Poppins';
+   font-weight: 500;
+  }
+  .tabela{
+  
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+  
+  }
+  
+  .tabela .titulo-tab th{
+    height: 60px;
+    text-align: center;
+  }
+  
+  .export{
+    text-align: center;
+    display: block;
+    padding: 20px 25px;
+    background-image: linear-gradient(to bottom, #3eff03, #006a13);
+    font-size: 1.3rem;
+    border: 1px solid #000000;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(16, 96, 0, 0.627);
+    font-weight: 500;
+    margin: 20px auto;
+  }
+  
+  .export:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, #32d400, #00480d);
+    box-shadow: 3px 4px 10px rgba(16, 96, 0, 0.627);
+  }
+  
+  table{
+    margin: 0 auto;
+  }
+
+  .formulario {  
+    border-radius: 5px;
+    padding: 20px; 
+    width: max-content;
+    text-align:center;
+    margin: 0 auto;
+    
+  }
+  
+  .formulario label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .formulario input[type="text"],
+  .formulario select{
+    min-width: 100px;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none; 
+  
+  }
+
+.botao{
+    text-align: center;  
+    width: 60%; 
+    margin: 10px;
+    padding: 10px 2px;
+    background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
+    font-size: 1.3rem;
+    border: 1px solid #ffbb01;
+    border-radius: 8px;
+    box-shadow: none;
+    font-weight: 500;
+  }
+  
+  .botao:hover{
+    background-image: linear-gradient(to bottom, #e0990b, #e0670b);
+    box-shadow: 0px 0px 3px #ffa601;
+  }
+
+  .excluir-registro{
+    background-image: linear-gradient(to bottom, #fcad04, #e00b0b);
+    border-radius: 4px;
+    border: 1px solid;
+    padding: 5px 15px;
+    box-shadow: 0px 0px 2px black;
+  
+  }
+  .excluir-registro:hover{
+    background-image: linear-gradient(to bottom, #c96a05, #bd0808);
+  }

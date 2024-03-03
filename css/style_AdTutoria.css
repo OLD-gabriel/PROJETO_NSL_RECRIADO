@@ -1,0 +1,99 @@
+@import url("global.css");
+
+.main-box-add{
+    background-color: #ffffff54; 
+    margin: 100px auto;
+    border-radius: 10px;
+    max-width: 500px;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;   
+    padding: 20px;
+    align-items: center;
+    justify-content: center;  
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226); 
+  }
+  
+  .main-box-add-form input[type="number"],input[type="text"],input[type="submit"],input[type="reset"]{
+    min-width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .main-box-add input[type="number"],input[type="text"],input[type="submit"],input[type="reset"]{
+    min-width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .titulo {
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
+    margin: 10px;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .campos,
+.nomes,
+.N-vagas,
+.button {
+
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgb(238, 238, 238);
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 20px;
+  outline: none;
+}
+
+.campos {
+  background-color: white;
+  color: #333;
+}
+
+.nomes {
+  background-color: white;
+  color: #333;
+}
+
+.N-vagas {
+  color: black;
+
+}
+
+.botoes{
+    display: flex;
+    justify-content: center;
+  }
+
+  select{
+    min-width: 100px;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none; 
+  
+  }
+
+  button, input[type="submit"], input[type="reset"] {
+    border: none;
+    margin: auto;
+    width: 82px;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
+    border-radius: 5px;
+    font-size: 20px;
+  }
+  button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    border: 1px solid #d19900;
+    background-image: linear-gradient(to bottom, #ca8a00, #b85000);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }

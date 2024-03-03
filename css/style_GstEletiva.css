@@ -1,0 +1,177 @@
+@import url("global.css");
+
+
+h1, h2, h3, p{
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  img {
+    display: block;
+    margin: 0px;
+    height: 100%;
+  }
+  
+  a{
+    color: black;
+    text-decoration: none;
+    font-size: 18pt;
+  }
+  
+  button {
+    margin-top: 20px;
+  } 
+    
+.eletiva-bg{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    place-content: space-around;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .eletiva-bg .eletivas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .botao{
+    border: none;
+    width: 120px;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
+    border-radius: 5px;
+    font-size: 22px;
+    border: 2px solid rgb(252, 122, 0);
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
+  }
+  
+  
+  .nada{
+    background-color: #ffffff82;
+    padding: 12px;
+    border-radius: 10px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226); 
+    width: 350px;
+    margin: 0 auto;
+  }
+  
+  .botao:hover{
+    background-image: linear-gradient(to bottom, #e0990b, #e0670b);
+    box-shadow: 0px 0px 3px #ffa601;
+    cursor: pointer;
+  }
+  
+  .eletivas{
+    background-color: #ffffff82;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226);
+  }
+  
+  .eletivas .user{
+    width: 90px;
+    height: 90px;
+  }
+  
+  .eletivas span{
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: grid;
+    text-align: center;
+  }
+  
+  @media(max-width: 1100px){
+  
+    .eletiva-bg{
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  
+    .user a{
+      font-size: 1.5rem;
+    }
+  } 
+  
+  @media (max-width: 800px){
+  
+   .eletiva-bg {
+    margin-top: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+   }
+   .header-user .nome{
+    font-size: 1.5rem;
+   }
+  }
+  
+  @media (max-width: 600px){
+  
+    .header .header-user img{
+      display: none;
+    }
+    
+    .header-user .nome{
+      font-size: 1rem;
+     }
+  
+     .eletivas span{
+      font-size: 1.1rem;
+     }
+  
+  }
+  
+  @media (max-width: 500px){
+  
+  
+    .eletiva-bg{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .nome-eletiva{
+    margin: 0px;
+    font-size: 15px;
+  }
+  
+  .botao-excluir{
+    text-align: center;
+    display: block;
+    padding: 10px 15px;
+    background-image: linear-gradient(to bottom, #ff7a0d, #f74803, #db0303);
+      font-size: 1.3rem;
+      border: 1px solid #000000;
+      box-shadow: 2px 2px 5px rgba(81, 0, 0, 0.568);
+      border-radius: 8px;                                                       
+    border-radius: 8px;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  
+  .botao-excluir:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, #cb620b, #b13200, #9a0000);
+    box-shadow: 2px 2px 5px rgba(81, 0, 0, 0.568);
+  }
+  .botao-excluir,
+  .botao{
+    cursor: pointer;
+  }
+  

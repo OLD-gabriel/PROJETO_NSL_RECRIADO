@@ -1,7 +1,8 @@
 <?php
 include "database.php";
 
-function Exibir_tutores(){
+function Exibir_tutores()
+{
     $consulta = query("SELECT * FROM tutoria ORDER BY turno ASC ");
     if ($consulta->num_rows > 0) {
         foreach ($consulta as $row) {
@@ -16,10 +17,10 @@ function Exibir_tutores(){
                 <span class='nome-tutor'>" . $row["turno"] . "
                 </span>
                 <form action='' method='post'>
-                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .   $row["nome_professor"].$row["turno"] . "' >Ver alunos</button>
+                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .   $row["nome_professor"] . $row["turno"] . "' >Ver alunos</button>
                 </form>
                 <form action='' method='get'>
-                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"].$row["turno"] ."'>Excluir</button> 
+                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"] . $row["turno"] . "'>Excluir</button> 
               </form>
              </div>
                 ";
@@ -35,24 +36,24 @@ function Exibir_tutores(){
 }
 
 if (isset($_GET["excluir"])) {
-    
+
     $consulta = query("SELECT * FROM tutoria");
     $botaoclicado = $_GET["excluir"];
     foreach ($consulta as $row) {
-        if ($botaoclicado == "excluir-" . $row["nome_professor"].$row["turno"]) {
+        if ($botaoclicado == "excluir-" . $row["nome_professor"] . $row["turno"]) {
 
             $turno = $row["turno"];
             $nome_professor = $row["nome_professor"];
 
             $consulta_excluir = query("SELECT * FROM todas_escolhas_tutoria WHERE nome_tutoria = '$nome_professor' AND turno = '$turno'");
 
-            foreach($consulta_excluir as $row_excluir){
+            foreach ($consulta_excluir as $row_excluir) {
                 $RA = $row_excluir["RA"];
                 $excluir_registro = query("DELETE FROM todas_escolhas_tutoria where RA = '$RA'");
             }
 
             $exluir_registro = query("DELETE FROM tutoria WHERE nome_professor = '$nome_professor' AND turno = '$turno'");
- 
+
             if ($exluir_registro) {
                 echo "<script>history.replaceState({},document.title,window.location.pathname)</script>";
             }
@@ -60,11 +61,11 @@ if (isset($_GET["excluir"])) {
     }
 }
 
-if(isset($_POST["tutores"])){
+if (isset($_POST["tutores"])) {
     $consulta = query("SELECT * FROM tutoria");
     $botaoclicado = $_POST["tutores"];
-    foreach($consulta as $row){
-        if($botaoclicado == "escolher-" . $row["nome_professor"].$row["turno"]){
+    foreach ($consulta as $row) {
+        if ($botaoclicado == "escolher-" . $row["nome_professor"] . $row["turno"]) {
 
             session_start();
             $_SESSION["tutor"] = $row["nome_professor"];
@@ -72,7 +73,6 @@ if(isset($_POST["tutores"])){
             header("location: tutorandos.php");
         }
     }
-
 }
 ?>
 
@@ -84,9 +84,9 @@ if(isset($_POST["tutores"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gestor | Nsl</title>
+    <title>Tutorias | Nsl</title>
     <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style-GST.css">
+    <link rel="stylesheet" href="../css/style_GstTutor.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,34 +109,33 @@ if(isset($_POST["tutores"])){
 
 
     <!-- Pop-up -->
-    <div id="sobreposicao-popup">
-        <div id="conteudo-popup">
+    <div id="sobreposicao-popup" class="sobreposicao-popup">
+        <div id="conteudo-popup" class="conteudo-popup">
             <h2>Sucess</h2>
             <p> tutoria excluida com sucesso! <br> recarregue a pagina </p>
-            <button id="fechar-popup">Fechar</button>
+            <button class="fechar-popup" id="fechar-popup">Fechar</button>
         </div>
     </div>
 
 
 
     <script>
-
-setTimeout( function(){
+        setTimeout(function() {
             location.reload()
-        },10000)
-        
-    const botaoFecharPopup = document.getElementById('fechar-popup');
-    const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
+        }, 10000)
 
-    function fecharPopup() {
-        sobreposicaoPopup.style.display = 'none';
-    }
+        const botaoFecharPopup = document.getElementById('fechar-popup');
+        const sobreposicaoPopup = document.getElementById('sobreposicao-popup');
 
-    function mostrarPopup() {
-        sobreposicaoPopup.style.display = 'block';
-    }
+        function fecharPopup() {
+            sobreposicaoPopup.style.display = 'none';
+        }
 
-    botaoFecharPopup.addEventListener('click', fecharPopup);
+        function mostrarPopup() {
+            sobreposicaoPopup.style.display = 'block';
+        }
+
+        botaoFecharPopup.addEventListener('click', fecharPopup);
     </script>
 
     <main class="tutor">
@@ -145,14 +144,14 @@ setTimeout( function(){
         Exibir_tutores();
         ?>
     </main>
- <br>
+    <br>
     <center>
-        <a  href="../html/pag_gestor.html" class="btn-submit">Voltar</a>
+        <a href="../html/pag_gestor.html" class="btn-submit">Voltar</a>
     </center>
 
     <footer>
         <div class="creditos">
-            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
+            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora de Lourdes"
             </p>
             <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
 
@@ -182,21 +181,8 @@ setTimeout( function(){
         </div>
         <hr class="linha-horizontal">
         <div class="informacoes-escola">
-            
-            <div class="instagram-links">
 
-                <div class="tecnico-sala">
-                    <img src="../img/logo_sala.png" alt="Logo Sala" class="logo-sala">
-                    <a href="https://www.instagram.com/2.tecnico_nsl/" target="_blank" class="link-tecnico">Técnico</a>
 
-                </div>
-                <div class="escola-insta">
-                    <img src="../img/instagram.png" alt="Instagram" class="logo-instagram">
-                    <a href="https://www.instagram.com/nslescola/" target="_blank" class="link-escola">Escola</a>
-
-                </div>
-
-            </div>
         </div>
     </footer>
 </body>

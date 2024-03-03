@@ -1,0 +1,214 @@
+@import url("global.css");
+ 
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+
+
+}
+
+p{
+  margin: 10px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  display: block;
+  margin: 0px;
+  height: 100%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 18pt;
+  text-align: justify;
+}
+
+button {
+  margin-top: 20px;
+}
+
+/* header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 10px 30px;
+  max-width: 1300px;
+}
+
+.header .brazao img {
+  width: 70px;
+  height: 100px;
+}
+
+
+.header .header-user {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 1.9rem;
+}
+
+.header .nome {
+  color: #e0e0e0;
+  text-align: right;
+  font-size: 15px;
+}
+
+.user {
+  width: 110px;
+  height: 60px;
+}
+
+
+
+.title-eletiva{ 
+  width: 400px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto; 
+}
+
+.tutor {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  place-content: space-around;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.tutor .tutores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao {
+  border: none;
+  width: 120px;
+  height: 50px;
+  font-weight: bold;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
+  border-radius: 5px;
+  font-size: 22px;
+  border: 2px solid rgb(252, 122, 0);
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
+}
+
+.botao:hover {
+  background-image: linear-gradient(to bottom, #e0990b, #e0670b);
+  box-shadow: 0px 0px 3px #ffa601;
+}
+
+.tutores {
+  background-color: #ffffff82;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.tutores img {
+  width: 100px;
+  height: 100px;
+}
+
+.tutores span {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+
+button:hover {
+  cursor: pointer;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+}
+
+.enviar {
+  border: none;
+  width: 82px;
+  height: 40px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #d3670f;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+@media(max-width: 1100px) {
+ 
+  .tutor {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .user a {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media (max-width: 800px) {
+
+
+
+  .tutor {
+    margin-top: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .user .nome {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .header .header-user img {
+    display: none;
+  }
+
+  .header-user .nome {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) { 
+  .tutor {
+    grid-template-columns: 1fr;
+  }
+} 
+

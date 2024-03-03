@@ -26,19 +26,13 @@ if (isset($_POST["excluir-registro"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gestor | Nsl</title>
+    <title>Eletiva Alunos | Nsl</title>
     <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style-GST.css">
-    <link rel="stylesheet" href="../css/style-tabela.css">
+    <link rel="stylesheet" href="../css/style_eletivandos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
-    <style>
-        td {
-            padding: 2px 1.5vw;
-        }
-    </style>
 </head>
 
 <body>
@@ -93,7 +87,7 @@ if (isset($_POST["excluir-registro"])) {
     </main>
     <center>
         <br><br>
-        <a  href="GST_ELT.php" class="btn-submit">Voltar</a>
+        <a href="GST_ELT.php" class="btn-submit">Voltar</a>
     </center>
     <script>
         function exportToExcel() {
@@ -110,7 +104,7 @@ if (isset($_POST["excluir-registro"])) {
 
     <footer>
         <div class="creditos">
-            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora"
+            <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora de Lourdes"
             </p>
             <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
 
@@ -141,20 +135,7 @@ if (isset($_POST["excluir-registro"])) {
         <hr class="linha-horizontal">
         <div class="informacoes-escola">
 
-            <div class="instagram-links">
 
-                <div class="tecnico-sala">
-                    <img src="../img/logo_sala.png" alt="Logo Sala" class="logo-sala">
-                    <a href="https://www.instagram.com/2.tecnico_nsl/" target="_blank" class="link-tecnico">Técnico</a>
-
-                </div>
-                <div class="escola-insta">
-                    <img src="../img/instagram.png" alt="Instagram" class="logo-instagram">
-                    <a href="https://www.instagram.com/nslescola/" target="_blank" class="link-escola">Escola</a>
-
-                </div>
-
-            </div>
         </div>
     </footer>
 

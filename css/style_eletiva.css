@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url("global.css");
 
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -8,7 +8,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(170deg, #bf2633, #f29f05, #f28705, #f24405, #000000) fixed ;
   background-repeat: no-repeat;
   background-position: center;
   
@@ -26,19 +25,14 @@ img {
   height: 100%;
 }
 
-a{
-  color: black;
-  text-decoration: none;
-  font-size: 18pt;
-}
-
 button {
   margin-top: 20px;
 }
+ 
 
 /* header */
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -46,32 +40,42 @@ button {
   box-sizing: border-box;
   padding: 10px 30px;
   max-width: 1300px;
-} 
+}
 
-.header .brazao img{
+.header .brazao img {
   width: 70px;
   height: 100px;
 }
 
 
-.header .header-user{
+.header .header-user {
   display: flex;
   align-items: center;
   color: #fff;
   font-size: 1.9rem;
-  
 }
 
-.header .nome{
-  color: #e0e0e0;  
+.header .nome {
+  color: #e0e0e0;
   text-align: right;
+  font-size: 15px;
 }
 
-.user{
+.user {
   width: 110px;
   height: 60px;
 }
 
+
+
+.title-eletiva{ 
+  width: 400px;
+  padding: 12px;
+  margin: 10px auto;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto; 
+}
 
 /* main */
 
@@ -107,8 +111,12 @@ button {
   border: 2px solid rgb(252, 122, 0);
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
 }
-
-
+a {
+  color: black;
+  text-decoration: none;
+  font-size: 15px;
+  text-align: justify;
+}
 .nada{
   background-color: #ffffff82;
   padding: 12px;
@@ -228,156 +236,11 @@ button {
   cursor: pointer;
 }
 
+ p{
+    margin: 20px;
+ }
 
-
-/* Estilos do pop-up */
-#sobreposicao-popup {
-  display: none;
-  /* Inicialmente oculto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#conteudo-popup {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-#fechar-popup {
-  max-width: max-content;
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 1.3rem;
-  border-radius: 10px;
-  border: 1px solid #ffbb01;
-  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  color: rgb(0, 0, 0);
-}
-#fechar-popup:hover{
-  border: 1px solid #d19900;
-  background-image: linear-gradient(to bottom, #cf8e0c, #cf600b);
-  color: rgb(0, 0, 0);
-}
-
-
-/* Estilos do pop-up */
-#sobreposicao-popup2 {
-  display: none;
-  /* Inicialmente oculto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#conteudo-popup2 {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-#fechar-popup2 {
-  border: none;
-  width: 82px;
-  height: 40px;
-  font-weight: bold;
-  text-align: center;
-  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  border-radius: 5px;
-  font-size: 20px;
-}
-#fechar-popup2:hover{
-  border: 1px solid #d19900;
-  background-image: linear-gradient(to bottom, #ca8a00, #b85000);
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-}
-
-#fechar-popup:hover{
-  border: 1px solid #d19900;
-  background-image: linear-gradient(to bottom, #cf8e0c, #cf600b);
-  color: rgb(0, 0, 0);
-}
-
-
-/* Estilos do pop-up */
-#sobreposicao-popup3 {
-  display: none;
-  /* Inicialmente oculto */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#conteudo-popup3 {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-}
-
-#fechar-popup3 {
-  border: none;
-  width: 82px;
-  height: 40px;
-  font-weight: bold;
-  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  text-align: center;
-  border-radius: 5px;
-  font-size: 20px;
-}
-
-#fechar-popup3:hover{
-  border: 1px solid #d19900;
-  background-image: linear-gradient(to bottom, #ca8a00, #b85000);
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-}
-
-.title-eletiva{
-  background-color: #ffffff82;
-  width: 400px;
-  padding: 12px;
-  border-radius: 10px;
-  text-align: center;
-  margin: 0 auto;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226);
-}
+ 
 
     
 footer {
