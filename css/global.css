@@ -88,6 +88,7 @@ text-align: center;
 } 
 .nome{
   color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .header  {
   font-size: 1.5rem;

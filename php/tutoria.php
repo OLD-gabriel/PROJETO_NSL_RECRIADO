@@ -16,34 +16,7 @@ $turno = $_SESSION["turno"];
 
 function mostarTutorias()
 {
-    global $turno;
-    global $prefixo;
-    $consulta = query("SELECT * FROM tutoria");
-    if ($consulta->num_rows > 0) {
-        foreach ($consulta as $row) {
-            if ($row["turno"] == $turno) {
-                echo "
-                <div class='tutores'>
-                    <img src='../img/avatar.png' alt='' class=''>
-                    <span class='nome-tutor'>" . $row["nome_professor"]  . "<br>
-                        vagas:
-                        " . $row["vagas"] . "
-                    </span>
-                    <form action='' method='post'>
-                        <button type='submit' class='botao' name='tutores' value='escolher-" . $row["nome_professor"] . $row["turno"] . "' >Escolher</button>
-                    </form>
-                </div>
-            ";
-            }
-        }
-    } else {
-        echo "  
-        <div class='tutores'>
-        <h1>SEM TUTORIAS!</h1> <br> 
-    <span>peça algum gestor para adicionar Tutores </span>
-    </div> 
-        ";
-    }
+
 }
 
 if (isset($_POST["tutores"])) {
@@ -98,7 +71,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     <header>
         <div class="header">
             <div class="brazao">
-                <a href="../Tutoria-Eletiva.html"><img src="../img/brazao.png" alt="Brazao" class="brazao"></a>
+                <a href="#"><img src="../img/brazao.png" alt="Brazao" class="brazao"></a>
             </div>
 
             <div class="header-user">
@@ -122,7 +95,50 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
 
     <main class="tutor">
         <?php
-        mostarTutorias();
+            global $turno;
+            global $prefixo;
+            $consulta = query("SELECT * FROM tutoria ORDER BY vagas DESC");
+            if ($consulta->num_rows > 0) {
+                foreach ($consulta as $row) {
+                    if ($row["turno"] == $turno) {
+                        if($row["vagas"] > 0){
+                            $status_vagas = "DISPONIVEL";
+                        }else{
+                            $status_vagas = "INDISPONÍVEL";
+                        }
+                        ?>
+                        <div class='tutores'  <?php if ($row["vagas"] == 0) {
+                            echo "style='background-color: #b9b9b993;'";
+                            } ?>>
+                            <img src='../img/avatar.png' alt='' class=''>
+                            <span class='nome-tutor'><?php echo $row["nome_professor"]; ?><br><br>
+                            </span>
+
+                                <b>vagas:</b><br>
+                                <?php echo $status_vagas; ?>
+                            <form action='' method='post'>
+                            <?php
+                                if ($row["vagas"] > 0) {
+                                ?>
+                                    <button type='submit' class='botao' name='eletivas' value='escolher-<?php echo $row["nome_eletiva"] . $row["turno"]; ?>'> Escolher </button>
+                                <?php
+                                } else {
+                                    echo "<br><br><br><br>  ";
+                                }
+                                ?>
+                            </form>
+                        </div>
+                        <?php 
+                    }
+                }
+            } else {
+                ?>  
+                <div class='tutores'>
+                <h1>SEM TUTORIAS!</h1> <br> 
+            <span>peça algum gestor para adicionar Tutores </span>
+            </div> 
+                <?php 
+            }
         ?>
     </main>
     <!-- Pop-up -->

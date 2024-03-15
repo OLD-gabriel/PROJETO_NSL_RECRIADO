@@ -20,7 +20,13 @@
     height: 100%;
     max-width: 100%;
   }
-  
+  .nome button{
+    background: none;
+    border: none;
+    color: red;
+    font-size: 17px;
+    text-decoration: underline;
+  }
   .caixas{  
     display:flex;
     justify-content: center;
@@ -34,11 +40,11 @@
     border-radius: 7px;
     padding: 20px;
   }
-
+  
   /* main */ 
   .nome{
     font-size: 15px;
-    color: white;
+    color: white; 
   }
   .btn-sair {
     height: 50px; 

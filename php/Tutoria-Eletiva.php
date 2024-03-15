@@ -8,7 +8,7 @@ $dado = mysqli_fetch_assoc($buscar_dado);
 
 session_start();
 
-if(!isset($_SESSION["RA"])){
+if (!isset($_SESSION["RA"])) {
     header("location: ../index.html");
     exit();
 }
@@ -37,11 +37,14 @@ $turno = $_SESSION['turno'];
         <div class="header">
             <img class="header-brazao" src="../img/Imagem3.png" alt="Brazao">
             <div class="header-menu">
-                <a href="#" class="nome">
-                <?php echo $nome_aluno . "<br>" . $serie . "<br>" . $curso_tec . "<br>" . $turno;   ?>
+                <span href="#" class="nome">
+                    <?php echo $nome_aluno . "<br>" . $serie . "<br>" . $curso_tec . "<br>" . $turno;   ?>
+                    <br>
+                    <button  onclick="mostrarPopup('sobreposicao-popup')">SAIR</button>
 
                     <br>
-                </a>
+                </span>
+
                 <img class="user" src="../img/Imagem1.svg" alt="User">
             </div>
         </div>
@@ -54,15 +57,13 @@ $turno = $_SESSION['turno'];
                     <div class="status">
                         <h3 class="">SISTEMA DE ELETIVAS <br> <?php echo $dado["eletiva"] ?></h3>
                         <form action="" method="post">
-                            <a   
-                        <?php 
-                        if($dado["eletiva"] == "DESATIVADO"){
-                            echo "href='#'";
-                        }else{
-                            echo "href='../php/eletiva.php'";
-                        }
-                        ?>
-                            Class="animated-button1">
+                            <a <?php
+                                if ($dado["eletiva"] == "DESATIVADO") {
+                                    echo "href='#'";
+                                } else {
+                                    echo "href='../php/eletiva.php'";
+                                }
+                                ?> Class="animated-button1">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -74,16 +75,13 @@ $turno = $_SESSION['turno'];
                     <div class="status">
                         <form action="" method="post">
                             <h3 class="">SISTEMA DE TUTORIA <br> <?php echo $dado["tutoria"] ?></h3>
-                            <a
-                            
-                            <?php 
-                        if($dado["tutoria"] == "DESATIVADO"){
-                            echo "href='#'";
-                        }else{
-                            echo "href='../php/tutoria.php'";
-                        }
-                        ?>
-                          Class="animated-button1">
+                            <a <?php
+                                if ($dado["tutoria"] == "DESATIVADO") {
+                                    echo "href='#'";
+                                } else {
+                                    echo "href='../php/tutoria.php'";
+                                }
+                                ?> Class="animated-button1">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -93,7 +91,6 @@ $turno = $_SESSION['turno'];
                     </div>
                 </div>
             </div>
-            <button class="btn-sair" onclick="mostrarPopup('sobreposicao-popup')">SAIR</button>
         </div>
     </main>
 
