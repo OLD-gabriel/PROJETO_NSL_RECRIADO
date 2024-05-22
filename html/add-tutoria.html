@@ -38,31 +38,29 @@
 
         <!-- Formulário de inserção de Tutoria -->
         <div class="main-box-add">
-            <h2 class="titulo">Inserção de Tutoria</h2>
+            <h2 class="titulo">Insira o Tutor(a)</h2>
             <form action="../php/processar_add_tutoria.php" method="post">
 
                 <!-- Campos do formulário -->
                 <label for="1-nome">Digite o nome do Profissional:</label>
-                <input type="text" required id="1-nome" maxlength="200"
-                    class="nomes" name="nome">
+                <input type="text" required id="1-nome" maxlength="200" class="nomes" name="nome">
 
-                <label for="vagas">Informe o numero de vagas</label>
+                <label for="vagas">Informe o número de vagas</label>
                 <input type="number" class="N-vagas" required name="vagas">
 
                 <div class="turnos">
+                    
                     <label for="turno">Selecione o turno da Tutoria:</label>
                     <select name="turno" id="turno" required>
                         <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
-                        <option value="VESPERTINO">VESPERTINO</option>
-                        <option value="NOTURNO">NOTURNO</option>
+                        <option value="VESPERTINO">VESPERTINO</option> 
                     </select>
                 </div>
 
                 <br><br>
 
                 <!-- Botões de reset e submit -->
-                <div class="botoes">
-                    <input type="reset">
+                <div class="botoes"> 
                     <input type="submit" name="enviar">
                 </div>
             </form>
@@ -71,7 +69,7 @@
         <!-- Pop-up -->
         <div id="sobreposicao-popup" class="sobreposicao-popup">
             <div id="conteudo-popup" class="conteudo-popup">
-                <h2>Sucess</h2>
+                <h2>Sucesso</h2>
                 <p> Tutoria inserida com <br> sucesso!</p>
                 <button id="fechar-popup" class="fechar-popup"
                     onclick="fecharPopup('sobreposicao-popup')">Fechar</button>

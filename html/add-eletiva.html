@@ -37,7 +37,7 @@
 
         <!-- Formulário de inserção de eletivas -->
         <div class="main-box-add">
-            <h2 class="titulo">Inserção de eletivas</h2>
+            <h2 class="titulo">Inserir Eletiva</h2>
             <form action="../php/processar_add_eletiva.php" method="post"
                 class="main-box-add-form">
 
@@ -57,7 +57,7 @@
                     class="nomes">
 
                 <label class="form-label" for="3-nome">Digite o 3º nome do
-                    Professor(se tiver):</label>
+                    Professor:</label>
                 <input type="text" id="3-nome" name="3prof" maxlength="254"
                     class="nomes">
 
@@ -68,7 +68,7 @@
                 <option value="EJA">EJA</option>
             </select>-->
 
-                <label class="form-label" for="vagas">Digite o numero de
+                <label class="form-label" for="vagas">Digite o número de
                     vagas:</label>
                 <input type="number" class="N-vagas" maxlength="254"
                     name="vagas" required>
@@ -81,8 +81,7 @@
                         <option value="NOTURNO">NOTURNO</option>
                     </select>
                 </div>
-                <h3>Selecione o curso da eletiva:</h3>
-                <br>
+                <h3>Selecione o curso da eletiva:</h3> 
 
                 <div class="selecionar-cursos">
                     <input type="checkbox" class="seleção" name="curso[]"
@@ -93,17 +92,13 @@
                         class="label-checkbox">ADMINISTRAÇÃO</span> <br>
                     <input type="checkbox" class="seleção" name="curso[]"
                         value="HUMANIDADES"> <span
-                        class="label-checkbox">HUMANIDADES </span><br>
-                    <input type="checkbox" class="seleção" name="curso[]"
-                        value="EJA"> <span class="label-checkbox">EJA </span>
-                    <br>
+                        class="label-checkbox">HUMANIDADES </span><br> 
                 </div>
 
                 <br><br>
 
                 <div class="botoes">
-                    <!-- Botões de reset e submit -->
-                    <input type="reset">
+                    <!-- Botões de reset e submit --> 
                     <input type="submit" name="enviar">
                 </div>
             </form>

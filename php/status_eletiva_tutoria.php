@@ -4,6 +4,11 @@ include 'database.php';
 
 $sistema = $_GET["sistema"];
 
+if($sistema == "tutoria"){
+    $sistema_status = "Tutoria";
+}else{
+    $sistema_status = "Eletiva";
+}
 $buscar_dado = query("SELECT * FROM status_eletiva_tutoria");
 
 $dado = mysqli_fetch_assoc($buscar_dado);
@@ -45,7 +50,7 @@ $status = $dado[$sistema];
     </header>
     <div class="container">
         <div class="main-box">
-            <h2><?php echo $sistema?></h2>
+            <h2><?php echo $sistema_status?></h2>
             <p>O SISTEMA ESTÁ <?php echo $status?></p> 
         
             <form action="#" method="post">

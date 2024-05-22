@@ -15,6 +15,9 @@
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226); 
   }
   
+  a{
+    text-decoration: none;
+  }
   .main-box-add-form input[type="number"],input[type="text"],input[type="submit"],input[type="reset"]{
     min-width: 100px;
     margin-top: 10px;

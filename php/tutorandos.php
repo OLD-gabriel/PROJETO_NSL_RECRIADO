@@ -54,7 +54,7 @@ if (isset($_POST["excluir-registro"])) {
 
     <main class="main">
         <div class="alunos">
-            <h1>Tutorando de
+            <h1> 
                 <?php echo $tutor ?>
             </h1>
             <h3>
@@ -83,8 +83,8 @@ if (isset($_POST["excluir-registro"])) {
         <!-- Pop-up -->
         <div id="sobreposicao-popup" class="sobreposicao-popup">
             <div id="conteudo-popup" class="conteudo-popup">
-                <h2>Sucess</h2>
-                <p> aluno excluido com sucesso! <br> recarregue a pagina </p>
+                <h2>Sucesso</h2>
+                <p> Aluno excluido com sucesso! <br> recarregue a pagina </p>
                 <button class="fechar-popup" id="fechar-popup">Fechar</button>
             </div>
         </div>

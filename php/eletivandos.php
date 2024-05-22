@@ -52,8 +52,8 @@ if (isset($_POST["excluir-registro"])) {
     <br><br><br>
 
     <main class="main">
-        <div class="alunos">
-            <h1>Alunos da eletiva <br>
+        <div class="alunos"> 
+            <h1>
                 <?php echo $eletiva ?>
             </h1>
             <h3>

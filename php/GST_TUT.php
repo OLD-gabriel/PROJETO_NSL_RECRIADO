@@ -17,10 +17,10 @@ function Exibir_tutores()
                 <span class='nome-tutor'>" . $row["turno"] . "
                 </span>
                 <form action='' method='post'>
-                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .   $row["nome_professor"] . $row["turno"] . "' >Ver alunos</button>
+                    <button type='submit' class='botao-ver' name='tutores' value='escolher-" .   $row["nome_professor"] . $row["turno"] . "' >Ver Alunos</button>
                 </form>
                 <form action='' method='get'>
-                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"] . $row["turno"] . "'>Excluir</button> 
+                  <button type='submit' class='botao-excluir' name='excluir' value='excluir-" .  $row["nome_professor"] . $row["turno"] . "'>Excluir Tutoria</button> 
               </form>
              </div>
                 ";

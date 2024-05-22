@@ -24,10 +24,10 @@ function Exibir_eletivas()
             " . $row["vagas"] . "
             </span>
             <form action='' method='post'>
-                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"] . $row["turno"] . "' >  alunos   </button> 
+                <button type='submit' class='botao' name='eletiva' value='escolher-" . $row["nome_eletiva"] . $row["turno"] . "' > Ver Alunos   </button> 
             </form> 
             <form action='' method='get'>
-                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"] . $row["turno"] . "'>Excluir</button> 
+                <button type='submit' class='botao-excluir' name='excluir' value='excluir-" . $row["nome_eletiva"] . $row["turno"] . "'>Excluir Eletiva</button> 
             </form> 
     
                     </div>";

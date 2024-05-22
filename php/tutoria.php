@@ -84,9 +84,9 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
         </div>
         <?php
     if (!empty($tutor_selecionado)) {
-        echo "<h3 class='title-eletiva' > Você escolheu o tutor(a) {$tutor_selecionado["nome_tutoria"]} </h3>";
+        echo "<h3 class='title-eletiva' > VOCÊ ESCOLHEU O(A) TUTOR(A): <br>{$tutor_selecionado["nome_tutoria"]} </h3>";
     } else {
-        echo "<h3 class='title-eletiva'> Você ainda não escolheu seu tutor. </h3>";
+        echo "<h3 class='title-eletiva'>  VOCÊ AINDA NÃO ESCOLHEU <br> SEU TUTOR. </h3>";
     }
     ?>
     </header>
@@ -97,14 +97,15 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
         <?php
             global $turno;
             global $prefixo;
-            $consulta = query("SELECT * FROM tutoria ORDER BY vagas DESC");
+            $consulta = query("SELECT * FROM tutoria ORDER BY vagas DESC, nome_professor ASC");
+
             if ($consulta->num_rows > 0) {
                 foreach ($consulta as $row) {
                     if ($row["turno"] == $turno) {
                         if($row["vagas"] > 0){
-                            $status_vagas = "DISPONIVEL";
+                            $status_vagas = "HÁ VAGAS";
                         }else{
-                            $status_vagas = "INDISPONÍVEL";
+                            $status_vagas = "VAGAS ESGOTADAS";
                         }
                         ?>
                         <div class='tutores'  <?php if ($row["vagas"] == 0) {
@@ -114,13 +115,13 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
                             <span class='nome-tutor'><?php echo $row["nome_professor"]; ?><br><br>
                             </span>
 
-                                <b>vagas:</b><br>
+                                
                                 <?php echo $status_vagas; ?>
                             <form action='' method='post'>
                             <?php
                                 if ($row["vagas"] > 0) {
                                 ?>
-                                    <button type='submit' class='botao' name='eletivas' value='escolher-<?php echo $row["nome_eletiva"] . $row["turno"]; ?>'> Escolher </button>
+                                    <button type='submit' class='botao' name='tutores' value='escolher-<?php echo $row["nome_professor"] . $row["turno"]  ?>'> Escolher </button>
                                 <?php
                                 } else {
                                     echo "<br><br><br><br>  ";
@@ -135,7 +136,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
                 ?>  
                 <div class='tutores'>
                 <h1>SEM TUTORIAS!</h1> <br> 
-            <span>peça algum gestor para adicionar Tutores </span>
+            <span>Peça ao gestor para adicionar Tutores </span>
             </div> 
                 <?php 
             }
@@ -145,7 +146,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     <div id="sobreposicao-popup" class="sobreposicao-popup">
         <div id="conteudo-popup" class="conteudo-popup">
             <h2 style="padding:5px;">CONFIRMADO!</h2>
-            <p>Você selecionou tutor com <br> sucesso!</p>
+            <p>Você selecionou tutor(a) com sucesso!</p>
             <div class="botoes">
                 <button id="fechar-popup" class="fechar-popup" onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
             </div>
@@ -155,8 +156,8 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     <!-- Pop-up -->
     <div id="sobreposicao-popup2" class="sobreposicao-popup">
         <div id="conteudo-popup" class="conteudo-popup">
-            <h2 style="padding:5px;">Tutoria já escolhida!</h2> <br>
-            <p>Você escolheu o Tutor(a) <?php echo $tutor_selecionado["nome_tutoria"] ?><br> </p>
+            <h2 style="padding:5px;">Tutor(a) escolhido!</h2> <br>
+            <p>Você escolheu o(a) Tutor(a) <?php echo $tutor_selecionado["nome_tutoria"] ?><br> </p>
             <div class="botoes">
                 <button class="fechar-popup" id="fechar-popup2" onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
             </div>

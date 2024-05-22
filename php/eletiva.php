@@ -83,9 +83,9 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
 
         <?php
         if (!empty($eletiva_selecionado)) {
-            echo "<h3 class='title-eletiva'  > Você escolheu a eletiva <br> {$eletiva_selecionado["nome_eletiva"]} </h3>";
+            echo "<h3 class='title-eletiva'  > VOCÊ ESCOLHEU A ELETIVA: <br> {$eletiva_selecionado["nome_eletiva"]} </h3>";
         } else {
-            echo "<h3 class='title-eletiva' > Você ainda não escolheu sua eletiva. </h3>";
+            echo "<h3 class='title-eletiva' > VOCÊ AINDA NÃO ESCOLHEU SUA ELETIVA. </h3>";
         }
         ?>
     </header>
@@ -99,9 +99,9 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
                     // STRPOS função para verificar se uam determinada palvra está em uma frase ou string
                     if (strpos($row["curso"], $curso_tec) || $row["curso"] == $curso_tec) {
                         if ($row["vagas"] > 0) {
-                            $status_vagas = "DISPONIVEL";
+                            $status_vagas = "HÁ VAGAS";
                         } else {
-                            $status_vagas = "INDISPONÍVEL";
+                            $status_vagas = "VAGAS ESGOTADAS";
                         }
         ?>
                         <div class='eletivas' <?php if ($row["vagas"] == 0) {
@@ -115,7 +115,7 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
                             <span class='nome-eletiva'><?php echo $row["professor_2"]; ?><br></span>
                             <span class='nome-eletiva'><?php echo $row["professor_3"]; ?><br></span>
                             <span class='nome-eletiva'>
-                                <b>vagas:</b><br>
+                                <b></b>
                                 <?php echo $status_vagas; ?>
                             </span>
                             <form action='' method='post'>
@@ -125,7 +125,7 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
                                     <button type='submit' class='botao' name='eletivas' value='escolher-<?php echo $row["nome_eletiva"] . $row["turno"]; ?>'> Escolher </button>
                                 <?php
                                 } else {
-                                    echo "<br><br><br> ";
+                                    echo "<br><br><br><BR> ";
                                 }
                                 ?>
 
@@ -150,7 +150,7 @@ $eletiva_selecionado = mysqli_fetch_assoc($pegar_eletiva);
     <div id="sobreposicao-popup" class="sobreposicao-popup">
         <div id="conteudo-popup" class="conteudo-popup">
             <h2 style="padding:5px;">CONFIRMADO!</h2>
-            <p>Você selecionou a eletiva com <br> sucesso!</p>
+            <p>Você selecionou a eletiva com sucesso!</p>
             <div class="botoes">
                 <button id="fechar-popup" class="fechar-popup" onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
             </div>
