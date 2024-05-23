@@ -60,6 +60,7 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style_tutoria.css">
+    <link rel="stylesheet" href="../css/header-menu.css">
     <title>Tutoria | nsl</title>
 
     <!-- <meta http-equiv="refresh" content="10"> -->
@@ -68,29 +69,74 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="brazao">
-                <a href="#"><img src="../img/brazao.png" alt="Brazao" class="brazao"></a>
-            </div>
+<header class="header">
 
-            <div class="header-user">
-                <a href="#" class="nome">
-                    <?php echo $nome_aluno . "<br>" . $serie . "<br>" . $turno; ?>
+<div class="menu">
+    <i class="fas fa-bars fa-2x" style="color:gray;width:20px"></i>
+</div>
 
-                </a>
-                <img src="../img/Imagem1.svg" alt="" class="user">
-            </div>
+<div class="img-tile">
+
+    <img src="../img/brazao.png" alt="">
+    <h1 class="header__title">ESCOLA NSL</h1>
+    </a>
+
+</div>
+
+
+<div class="user">
+    <img src="../img/user.png" id="icone-menu-lateral">
+</div>
+
+</header>
+<div class="boton-header"></div>
+
+
+<!-- MENU LATERAL -->
+
+
+<div id="area_menu_lateral" class="area_menu_lateral"></div>
+
+<div id="menu-lateral-icone-conteudo" class="menu-lateral-main">
+
+<div class="icone-menu-lateral-fechar">
+    <img src="../img/close.png" alt="">
+</div>
+
+<div class="conteudo-menu-lateral">
+
+    <div class="menu-lateral-main-header">
+
+        <div>
+            <img src="../img/brazao.png" alt="BRAZÃO NSL">
         </div>
-        <?php
-    if (!empty($tutor_selecionado)) {
-        echo "<h3 class='title-eletiva' > VOCÊ ESCOLHEU O(A) TUTOR(A): <br>{$tutor_selecionado["nome_tutoria"]} </h3>";
-    } else {
-        echo "<h3 class='title-eletiva'>  VOCÊ AINDA NÃO ESCOLHEU <br> SEU TUTOR. </h3>";
-    }
-    ?>
-    </header>
-    <br>
+
+        <h2>Perfil</h2>
+    </div>
+    <div class="menu-lateral-main-main">
+            <h4>NOME:</h4>
+            <span><?= $_SESSION["nome"] ?></span>
+            <hr>
+            <h4>RA:</h4>
+            <span><?= $_SESSION["RA"] ?></span>
+            <hr>
+            <h4>TURMA:</h4>
+            <span><?= $_SESSION["serie"] ?></span>
+            <hr>
+            <br>
+
+        <br>
+        <a href="session.php">Sair</a>
+
+    </div>
+
+    <div class="menu-lateral-main-footer">
+        <a href="http://wa.me/+5527996121313" target="_blank" >Gabriel Cirqueira</a>
+        <img src="../img/coding.png" alt="">
+    </div>
+</div>
+
+</div>
     
 
     <main class="tutor">
@@ -208,6 +254,36 @@ $tutor_selecionado = mysqli_fetch_assoc($pegar_tutor);
         function fecharPopup(id) {
             document.getElementById(id).style.display = 'none'
         }
+
+        const menuBtn = document.getElementById("icone-menu-lateral")
+        const menu = document.getElementById("area_menu_lateral")
+        const menu_conteudo = document.getElementById("menu-lateral-icone-conteudo")
+        const icone_fechar_menu = document.querySelector(".icone-menu-lateral-fechar")
+
+        function fecharMenu() {
+            menu.style.display = "none"
+            menu.style.backgroundColor = "rgba(0, 0, 0, 0)"
+            menu_conteudo.style.right = '-320px'
+            localStorage.setItem('menuAberto', 'false')
+        }
+
+        function abrirMenu() {
+            menu.style.display = "block"
+            menu.style.backgroundColor = "rgba(0, 0, 0, 0.507)"
+            menu_conteudo.style.right = '0px'
+            localStorage.setItem('menuAberto', 'true')
+        }
+
+        icone_fechar_menu.addEventListener('click', fecharMenu)
+
+        menuBtn.addEventListener('click', abrirMenu)
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuAberto = localStorage.getItem('menuAberto') === 'true';
+            if (menuAberto) {
+                abrirMenu();
+            }
+        });
     </script>
     <footer>
         <div class="creditos">

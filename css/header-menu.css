@@ -56,11 +56,14 @@ header {
     position: absolute;
     width: 40px;
     height: 40px;
-    right: 40px;
+    right: 25px;
     top: 30px;
 
   }
 
+  .user img:hover{
+    cursor: pointer;
+  }
   
 .area_menu_lateral{
   width: 100%;
@@ -88,9 +91,17 @@ header {
 
 .icone-menu-lateral-fechar { 
   background-color: rgb(255, 255, 255);
-  height: 35px;
+  height: 50px;
   padding: 10px;
   border-radius: 0px 0px 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icone-menu-lateral-fechar img{
+  width: 30px;
+  height: 30px;
 }
 
 .icone-menu-lateral-fechar:hover {  
@@ -132,4 +143,23 @@ header {
 .menu-lateral-main-main a:hover{
   background-color: rgb(124, 30, 30);
   cursor: pointer;
+}
+
+.menu-lateral-main-footer{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-lateral-main-footer a{
+  
+  text-decoration: underline;
+  color: black;
+}
+
+.menu-lateral-main-footer img{
+  width: 30px;
+  height: 30px;
 }

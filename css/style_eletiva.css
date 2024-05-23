@@ -4,14 +4,16 @@
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
+header{
+  height: 100px;
+}
 
-body {
-  margin: 0;
-  padding: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  
-  
+body{
+  margin: 0px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  background-color: rgb(219, 219, 219);
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, p{
@@ -29,51 +31,6 @@ button {
   margin-top: 20px;
 }
  
-
-/* header */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 10px 30px;
-  max-width: 1300px;
-}
-
-.header .brazao img {
-  width: 70px;
-  height: 100px;
-}
-
-
-.header .header-user {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  font-size: 1.9rem;
-}
-
-.header .nome {
-  color: #e0e0e0;
-  text-align: right;
-  font-size: 15px;
-}
-
-.user {
-  width: 110px;
-  height: 60px;
-}
-
-.title-eletiva{ 
-  width: 400px;
-  padding: 12px;
-  margin: 10px auto;
-  border-radius: 10px;
-  text-align: center;
-  margin: 0 auto; 
-}
 
 /* main */
 
@@ -96,18 +53,22 @@ button {
   justify-content: center;
   
 }
+.title-eletiva{
+  margin: 20px auto;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.075);
+  background-color: rgb(240, 240, 240);
+  padding: 20px 40px;
+}
 
 .botao{
   border: none;
   width: 120px;
-  height: 50px;
+  height: 40px;
   font-weight: bold;
-  text-align: center;
-  background-image: linear-gradient(to bottom, #FFB00D, #FF770D);
-  border-radius: 5px;
-  font-size: 22px;
-  border: 2px solid rgb(252, 122, 0);
-  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.315);
+  text-align: center; 
+  background-color: rgba(0, 195, 234, 0.667); 
+  font-size: 19px;  
+  transition: 0.5s ease-in;
 }
 a {
   color: black;
@@ -128,21 +89,19 @@ a {
 }
 
 .botao:hover{
-  background-image: linear-gradient(to bottom, #e0990b, #e0670b);
-  box-shadow: 0px 0px 3px #ffa601;
+  background-color: rgba(0, 169, 203, 0.667); 
   cursor: pointer;
 }
 
-.eletivas{
-  background-color: #ffffff82;
-  padding: 12px;
-  border-radius: 10px;
+.eletivas{ 
+  padding: 20px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.226);
+  background-color: #ffffff90;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.075);
 }
-
+ 
 .eletivas .user{
   width: 90px;
   height: 90px;
@@ -176,20 +135,9 @@ a {
   padding-left: 30px;
   padding-right: 30px;
  }
- .header-user .nome{
-  font-size: 1.5rem;
- }
 }
 
 @media (max-width: 600px){
-
-  .header .header-user img{
-    display: none;
-  }
-  
-  .header-user .nome{
-    font-size: 1rem;
-   }
 
    .eletivas span{
     font-size: 1.1rem;

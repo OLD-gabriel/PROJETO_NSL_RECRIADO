@@ -4,6 +4,49 @@ hr{
     border: 1px solid black;
    }
   
+body {
+  margin: 0px;
+  background: linear-gradient(170deg, rgb(122, 4, 4), #d3430a, #d48c05, #f28705, #f24405, #000000) fixed;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+ 
+header{
+  background-color: #ffffff54;
+text-align: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 30px;
+}
+
+.header-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header-brazao,.brazao {
+  width: 70px;
+  height: 100px;
+}
+.user {
+  width: 110px;
+  height: 60px;
+} 
+.nome{
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.header  {
+  font-size: 1.5rem;
+  color: #e0e0e0;
+}
    
   .alunos { 
     background-color: rgba(255, 255, 255, 0.467);

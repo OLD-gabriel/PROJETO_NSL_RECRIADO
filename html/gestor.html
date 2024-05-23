@@ -9,6 +9,7 @@
 
   <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/style-LG.css">
+  <link rel="stylesheet" href="../css/header-menu.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,31 +19,41 @@
 
 <body>
 
-  <header class="header-bg">
-    <div class="header">
-      <img src="../img/Imagem3.png" alt="Brazão do Nossa Senhora de Lourdeso" class="brazao">
-      <div class="barra">
-        <ul class="header-menu">
-          <a href="../index.html">
-            <li>Aluno</li>
-          </a>
-          
-        </ul>
-      </div>
+  <header class="header">
+
+    <div class="menu">
+      <i class="fas fa-bars fa-2x" style="color:gray;width:20px"></i>
     </div>
+
+    <div class="img-tile">
+
+      <img src="../img/brazao.png" alt="">
+      <h1 class="header__title">ESCOLA NSL</h1>
+      </a>
+
+    </div>
+
+
+     <div class="user">
+        <a href="../index.html">
+            <img src="../img/student.png">
+
+        </a>
+    </div> 
+
   </header>
+  <div class="boton-header"></div>
 
 
-  <main class="main-bg">
+  <main class="main-bg" style="min-height: 70vh;" >
     <div class="main-caixa">
 
-      <h1 class="main-login">LOGIN</h1>
+      <h1 class="main-login">GESTOR</h1>
 
       <form action="../php/processar-gestor.php" method="post" class="main-form">
-        <label for="" class="main-label">
+        <label for="" class="main-label-gestor">
           Senha:
-          <input type="password" name="senha" id="senha" placeholder="000-000" class="main-input" required>
-          <img src="../img/icons8-lock-30.png" alt="">
+          <input type="password" name="senha" id="senha" placeholder=" 000-000" class="main-input" required>
         </label>
       
         <div>
@@ -91,40 +102,9 @@
     }
   </script>
   <footer>
-    <div class="creditos">
         <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora de Lourdes"
         </p>
-        <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
-
-        <div class="nomes-grupos">
-
-
-            <div class="back">
-                <h4>Backend<br> desenvolvido por:</h4>
-                <p class="backend-info"> Gabriel <br>Cirqueira</p>
-            </div>
-            <div class="vertical"></div>
-
-            <div class="bd">
-                <h4>Banco de dados <br>desenvolvido por:</h4>
-                <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus <br>Trindade</p>
-
-            </div>
-            <div class="vertical"></div>
-
-            <div class="front">
-                <h4>Frontend <br>desenvolvido por:</h4>
-                <p class="frontend-info"> Guilherme<br> Vagmaker & <br> Arthur <br> Possino</p>
-
-            </div>
-        </div>
-
-    </div>
-    <hr class="linha-horizontal">
-    <div class="informacoes-escola">
-        
-       
-    </div>
+    
 </footer>
 
 </body>

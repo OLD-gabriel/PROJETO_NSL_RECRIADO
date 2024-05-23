@@ -165,8 +165,3 @@ a{
   transition: background-color 1s;
 }
 
-@media (max-width: 600px){
-  .header .user{
-    display: none;
-  }
-}

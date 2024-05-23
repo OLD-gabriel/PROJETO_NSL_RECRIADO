@@ -3,27 +3,69 @@
 body{
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column; 
 }
 
 *{
     font-family: Arial, Helvetica, sans-serif;
   }
-  
-  a{
-    color: rgb(14, 14, 14);
-    text-decoration: none;
-  }
+   
   
   h1, h2, h3, p{
     margin: 0px;
     padding: 0px;
+  } 
+
+  .main-bg{
+    flex: 1 1 0;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .button-ir-pag{
+    width: 310px;
+    padding: 10px 20px;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+    background-color: #67c6d296; 
+    font-family: "Oswald", 'Arial Narrow Bold', sans-serif; 
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 10px;
+    transition: 0.8s ease;
+  }
+
+  .button-ir-pag:hover{
+    background-color: #5da8b1a7; 
+
+  }
+
+  .button-ir-pag h3{
+    color: #000000;
+    font-size: 26px;
+  }
+
+  .button-ir-pag span{
+    color: black;
+    
   }
   
-  img{
-    display: block;
-    height: 100%;
-    max-width: 100%;
+  .button-ir-pag img{
+    height: 90px;
+    width:  90px;
   }
+
   .nome button{
     background: none;
     border: none;
@@ -35,6 +77,11 @@ body{
     display:flex;
     justify-content: center;
   }
+
+.main-bg h3 span{
+  color: rgb(0, 174, 255);
+  text-shadow: 0px 0px 2px rgba(70, 70, 70, 0.305);
+}
 
   .status{
     background-color: #ffffff54; 
@@ -156,6 +203,7 @@ body{
     color: white;
   }
   
+ 
   
   .nomes-grupos{ 
     display: flex;

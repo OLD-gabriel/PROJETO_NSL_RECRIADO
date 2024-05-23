@@ -1,193 +1,204 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Adicionar Eletiva | Nsl</title>
-        <link rel="shortcut icon" href="../img/favicon (3).ico"
-            type="image/x-icon">
+    <title>Adicionar Eletiva | Nsl</title>
+    <link rel="shortcut icon" href="../img/favicon (3).ico" type="image/x-icon">
 
-        <link rel="stylesheet" href="../css/style_AdEletiva.css">
+    <link rel="stylesheet" href="../css/style_AdEletiva.css">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap"
-            rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
 
-    </head>
+</head>
 
-    <body>
-        <!-- Cabeçalho da página -->
-        <header class="header-bg">
-            <div class="header">
-                <img class="header-brazao" src="../img/Imagem3.png"
-                    alt="Brazao">
-                <div class="header-menu">
-                    <a href="#" class="nome">
-                        ADMINISTRADOR
-                    </a>
-                    <img class="user" src="../img/Imagem1.svg" alt="User">
-                </div>
+<body>
+    <!-- Cabeçalho da página -->
+    <header class="header-bg">
+        <div class="header">
+            <img class="header-brazao" src="../img/Imagem3.png" alt="Brazao">
+            <div class="header-menu">
+                <a href="#" class="nome">
+                    ADMINISTRADOR
+                </a>
+                <img class="user" src="../img/Imagem1.svg" alt="User">
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- Formulário de inserção de eletivas -->
-        <div class="main-box-add">
-            <h2 class="titulo">Inserir Eletiva</h2>
-            <form action="../php/processar_add_eletiva.php" method="post"
-                class="main-box-add-form">
+    <!-- Formulário de inserção de eletivas -->
+    <div class="main-box-add">
+        <h2 class="titulo">Inserir Eletiva</h2>
+        <form action="../php/processar_add_eletiva.php" method="post" class="main-box-add-form">
 
-                <label class="form-label" for="nome-eletiva">Digite o nome da
-                    Eletiva:</label>
-                <input type="text" required id="nome-eletiva"
-                    name="nome-eletiva" maxlength="250" class="campos">
+            <label class="form-label" for="nome-eletiva">Digite o nome da
+                Eletiva:</label>
+            <input type="text" required id="nome-eletiva" name="nome-eletiva" maxlength="250" class="campos">
 
-                <label class="form-label" for="1-nome">Digite o 1º nome do
-                    Professor:</label>
-                <input type="text" required id="1-nome" class="nomes"
-                    maxlength="254" name="1prof">
+            <label class="form-label" for="1-nome">Digite o 1º nome do
+                Professor:</label>
+            <input type="text" required id="1-nome" class="nomes" maxlength="254" name="1prof">
 
-                <label class="form-label" for="2-nome">Digite o 2º nome do
-                    Professor:</label>
-                <input type="text" id="2-nome" name="2prof" maxlength="254"
-                    class="nomes">
+            <label class="form-label" for="2-nome">Digite o 2º nome do
+                Professor:</label>
+            <input type="text" id="2-nome" name="2prof" maxlength="254" class="nomes">
 
-                <label class="form-label" for="3-nome">Digite o 3º nome do
-                    Professor:</label>
-                <input type="text" id="3-nome" name="3prof" maxlength="254"
-                    class="nomes">
+            <label class="form-label" for="3-nome">Digite o 3º nome do
+                Professor:</label>
+            <input type="text" id="3-nome" name="3prof" maxlength="254" class="nomes">
 
-                <!-- <select name="cursos" id="curso" required>
+            <!-- <select name="cursos" id="curso" required>
                 <option value="INFORMÁTICA">INFORMÁTICA</option>
                 <option value="ADMINISTRAÇÃO">ADMINISTRAÇÃO</option>
                 <option value="HUMANIDADES">HUMANIDADES</option>
                 <option value="EJA">EJA</option>
             </select>-->
 
-                <label class="form-label" for="vagas">Digite o número de
-                    vagas:</label>
-                <input type="number" class="N-vagas" maxlength="254"
-                    name="vagas" required>
+            <label class="form-label" for="vagas">Digite o número de
+                vagas:</label>
+            <input type="number" class="N-vagas" maxlength="254" name="vagas" required>
 
-                <div class="turnos">
-                    <label for="turno">Selecione o turno da eletiva:</label>
-                    <select name="turno" id="turno" required>
-                        <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
-                        <option value="VESPERTINO">VESPERTINO</option>
-                        <option value="NOTURNO">NOTURNO</option>
-                    </select>
-                </div>
-                <h3>Selecione o curso da eletiva:</h3> 
-
-                <div class="selecionar-cursos">
-                    <input type="checkbox" class="seleção" name="curso[]"
-                        value="INFORMÁTICA"> <span
-                        class="label-checkbox">INFORMÁTICA </span> <br>
-                    <input type="checkbox" class="seleção" name="curso[]"
-                        value="ADMINISTRAÇÃO"><span
-                        class="label-checkbox">ADMINISTRAÇÃO</span> <br>
-                    <input type="checkbox" class="seleção" name="curso[]"
-                        value="HUMANIDADES"> <span
-                        class="label-checkbox">HUMANIDADES </span><br> 
-                </div>
-
-                <br><br>
-
-                <div class="botoes">
-                    <!-- Botões de reset e submit --> 
-                    <input type="submit" name="enviar">
-                </div>
-            </form>
-        </div>
-
-        <!-- Pop-up -->
-        <div id="sobreposicao-popup" class="sobreposicao-popup">
-            <div id="conteudo-popup" class="conteudo-popup">
-                <h2>Sucess</h2>
-                <p> Eletiva inserida com <br> sucesso!</p>
-                <button id="fechar-popup" class="fechar-popup"
-                    onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
+            <div class="turnos">
+                <label for="turno">Selecione o turno da eletiva:</label>
+                <select name="turno" id="turno" required>
+                    <option value="INTERMEDIÁRIO">INTERMEDIÁRIO</option>
+                    <option value="VESPERTINO">VESPERTINO</option>
+                    <option value="NOTURNO">NOTURNO</option>
+                </select>
             </div>
-        </div>
-
-        <div id="sobreposicao-popup2" class="sobreposicao-popup">
-            <div id="conteudo-popup" class="conteudo-popup">
-                <h2>ERROR!</h2>
-                <p> ESSA ELETIVA JÁ EXISTE!</p>
-                <button id="fechar-popup" class="fechar-popup"
-                    onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
+            <h3>Selecione as turmas da eletiva:</h3>
+            <div class="selecionar-cursos">
+                <h4>INTERMEDIÁRIO:</h4>
+                <div class="container">
+                    <div class="coluna">
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªIM01-EMI-IPI"><span class="label-checkbox">1ªIM01-EMI-IPI</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªIM01-EM"><span class="label-checkbox">1ªIM01-EM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªIM02-EM"><span class="label-checkbox">1ªIM02-EM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªIM03-EM"><span class="label-checkbox">1ªIM03-EM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªIM01-EM-HUM"><span class="label-checkbox">2ªIM01-EM-HUM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªIM01-EMI-ADM"><span class="label-checkbox">2ªIM01-EMI-ADM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªIM01-EMI-IPI"><span class="label-checkbox">2ªIM01-EMI-IPI</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªIM02-EMI-IPI"><span class="label-checkbox">2ªIM02-EMI-IPI</span><br>
+                    </div>
+                    <div class="coluna">
+                        <input type="checkbox" class="seleção" name="turma[]" value="3ªIM01-EM-HUM"><span class="label-checkbox">3ªIM01-EM-HUM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="3ªIM01-EMI-ADM"><span class="label-checkbox">3ªIM01-EMI-ADM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="3ªIM01-EMI-IPI"><span class="label-checkbox">3ªIM01-EMI-IPI</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="3ªIM02-EMI-ADM"><span class="label-checkbox">3ªIM02-EMI-ADM</span><br>
+                    </div>
+                </div>
+                <h4>VESPERTINO:</h4>
+                <div class="container">
+                    <div class="coluna">
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªV01-EM"><span class="label-checkbox">1ªV01-EM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="1ªV01-EMI-IPI"><span class="label-checkbox">1ªV01-EMI-IPI</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªV01-EM-HUM"><span class="label-checkbox">2ªV01-EM-HUM</span><br>
+                    </div>
+                    <div class="coluna">
+                        <input type="checkbox" class="seleção" name="turma[]" value="2ªV02-EM-HUM"><span class="label-checkbox">2ªV02-EM-HUM</span><br>
+                        <input type="checkbox" class="seleção" name="turma[]" value="3ªV01-EM-HUM"><span class="label-checkbox">3ªV01-EM-HUM</span><br>
+                    </div>
+                </div>
             </div>
+            
+
+            <br><br>
+
+            <div class="botoes">
+                <!-- Botões de reset e submit -->
+                <input type="submit" name="enviar">
+            </div>
+        </form>
+    </div>
+
+    <!-- Pop-up -->
+    <div id="sobreposicao-popup" class="sobreposicao-popup">
+        <div id="conteudo-popup" class="conteudo-popup">
+            <h2>Sucess</h2>
+            <p> Eletiva inserida com <br> sucesso!</p>
+            <button id="fechar-popup" class="fechar-popup" onclick="fecharPopup('sobreposicao-popup')">Fechar</button>
         </div>
+    </div>
 
-        <center>
-            <a href="pag_gestor.html" class="btn-submit">Voltar</a>
-        </center>
+    <div id="sobreposicao-popup2" class="sobreposicao-popup">
+        <div id="conteudo-popup" class="conteudo-popup">
+            <h2>ERROR!</h2>
+            <p> ESSA ELETIVA JÁ EXISTE!</p>
+            <button id="fechar-popup" class="fechar-popup" onclick="fecharPopup('sobreposicao-popup2')">Fechar</button>
+        </div>
+    </div>
 
-        <!-- Script JavaScript -->
-        <script>
+    <center>
+        <a href="pag_gestor.html" class="btn-submit">Voltar</a>
+    </center>
+
+    <!-- Script JavaScript -->
+    <script>
         const param = new URLSearchParams(window.location.search)
         const verif = param.get("status")
-    
-        if(verif == "true"){
+
+        if (verif == "true") {
             mostrarPopup('sobreposicao-popup')
-            history.replaceState({},document.title,window.location.pathname)
+            history.replaceState({}, document.title, window.location.pathname)
         }
-        if(verif == "false"){
+        if (verif == "false") {
             mostrarPopup('sobreposicao-popup2')
-            history.replaceState({},document.title,window.location.pathname)
+            history.replaceState({}, document.title, window.location.pathname)
         }
-        function mostrarPopup(id){
+        function mostrarPopup(id) {
             document.getElementById(id).style.display = 'block'
         }
-    
-        function fecharPopup(id){
+
+        function fecharPopup(id) {
             document.getElementById(id).style.display = 'none'
         }
     </script>
 
-        <!-- Rodapé da página -->
-        <footer>
-            <div class="creditos">
-                <p class="projeto-info">Projeto realizado pelos alunos de Altas
-                    Habilidades da escola "EEEM Nossa Senhora de Lourdes"
-                </p>
-                <p class="supervisao-info">Supervisionado pelos professores Alex
-                    Menezes & Vânia Alves</p>
+    <!-- Rodapé da página -->
+    <footer>
+        <div class="creditos">
+            <p class="projeto-info">Projeto realizado pelos alunos de Altas
+                Habilidades da escola "EEEM Nossa Senhora de Lourdes"
+            </p>
+            <p class="supervisao-info">Supervisionado pelos professores Alex
+                Menezes & Vânia Alves</p>
 
-                <div class="nomes-grupos">
+            <div class="nomes-grupos">
 
-                    <div class="back">
-                        <h4>Backend<br> desenvolvido por:</h4>
-                        <p class="backend-info"> Gabriel <br>Cirqueira</p>
-                    </div>
-                    <div class="vertical"></div>
-
-                    <div class="bd">
-                        <h4>Banco de dados <br>desenvolvido por:</h4>
-                        <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus
-                            <br>Trindade</p>
-
-                    </div>
-                    <div class="vertical"></div>
-
-                    <div class="front">
-                        <h4>Frontend <br>desenvolvido por:</h4>
-                        <p class="frontend-info"> Guilherme<br> Vagmaker & <br>
-                            Arthur <br> Possino</p>
-
-                    </div>
+                <div class="back">
+                    <h4>Backend<br> desenvolvido por:</h4>
+                    <p class="backend-info"> Gabriel <br>Cirqueira</p>
                 </div>
+                <div class="vertical"></div>
 
-            </div>
-            <hr class="linha-horizontal">
-            <div class="informacoes-escola">
+                <div class="bd">
+                    <h4>Banco de dados <br>desenvolvido por:</h4>
+                    <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus
+                        <br>Trindade
+                    </p>
 
+                </div>
+                <div class="vertical"></div>
+
+                <div class="front">
+                    <h4>Frontend <br>desenvolvido por:</h4>
+                    <p class="frontend-info"> Guilherme<br> Vagmaker & <br>
+                        Arthur <br> Possino</p>
+
+                </div>
             </div>
-        </footer>
-    </body>
+
+        </div>
+        <hr class="linha-horizontal">
+        <div class="informacoes-escola">
+
+        </div>
+    </footer>
+</body>
 
 </html>

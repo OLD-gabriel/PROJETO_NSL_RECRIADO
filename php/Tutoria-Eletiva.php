@@ -34,139 +34,105 @@ $turno = $_SESSION['turno'];
 </head>
 
 <body>
-<header class="header">
+    <header class="header">
 
-<div class="menu">
-  <i class="fas fa-bars fa-2x" style="color:gray;width:20px"></i>
-</div>
-
-<div class="img-tile">
-
-  <img src="../img/brazao.png" alt="">
-  <h1 class="header__title">ESCOLA NSL</h1>
-  </a>
-
-</div>
-
-
- <div class="user"> 
-    <img src="../img/user.png"  id="icone-menu-lateral" > 
-</div>
-
-</header>
-<div class="boton-header"></div>
-
-
-  <!-- MENU LATERAL -->
-
-
-  <div id="area_menu_lateral" class="area_menu_lateral"></div>
-
-  <div id="menu-lateral-icone-conteudo" class="menu-lateral-main">
-
-    <div class="icone-menu-lateral-fechar">
-      <i class="fas fa-times fa-2x" style="color: gray;"></i>
-    </div>
-
-    <div class="conteudo-menu-lateral">
-
-      <div class="menu-lateral-main-header">
-
-        <div>
-          <img src="public/assents/img/imagem3.png" alt="BRAZÃO NSL">
+        <div class="menu">
+            <i class="fas fa-bars fa-2x" style="color:gray;width:20px"></i>
         </div>
 
-        <h2>Perfil</h2>
-      </div>
-      <div class="menu-lateral-main-main">
-        <?php if ($user == "ALUNO") { ?>
-          <h4>NOME:</h4>
-          <span><?= $_SESSION["nome_aluno"] ?></span>
-          <hr>
-          <h4>RA:</h4>
-          <span><?= $_SESSION["ra"] ?></span>
-          <hr>
-          <h4>TURMA:</h4>
-          <span><?= $_SESSION["turma"] ?></span>
-          <hr>
-          <br>
+        <div class="img-tile">
 
-        <?php } else if ($user == "PROFESSOR") { ?>
-          <h4>NOME:</h4>
-          <span><?= $_SESSION["nome_professor"] ?></span>
-          <hr>
-          <h4>DISCIPLINA(S):</h4>
-          <span>
-            <?php 
-            
-            if(strpos($_SESSION["disciplinas"],";")){
-              $materias = explode(";",$_SESSION["disciplinas"]);
-              foreach ($materias as $materia) { ?>
-              <span><?= $materia ?> <br> </span>
-              <?php }}else{?>
-                <span><?= $_SESSION["disciplinas"] ?></span>
-              <?php }?>
-          </span>
-          <hr>
-        <?php } else if ($user == "GESTOR") { ?>
+            <img src="../img/brazao.png" alt="">
+            <h1 class="header__title">ESCOLA NSL</h1>
+            </a>
+
+        </div>
 
 
-        <?php } ?>
-        <br>
-        <a href="encerrar_sessao" >Sair</a>
+        <div class="user">
+            <img src="../img/user.png" id="icone-menu-lateral">
+        </div>
 
-      </div>
+    </header>
+    <div class="boton-header"></div>
 
-      <div class="menu-lateral-main-footer">
-        Gabriel Cirqueira $)
-      </div>
+
+    <!-- MENU LATERAL -->
+
+
+    <div id="area_menu_lateral" class="area_menu_lateral"></div>
+
+    <div id="menu-lateral-icone-conteudo" class="menu-lateral-main">
+
+        <div class="icone-menu-lateral-fechar">
+            <img src="../img/close.png" alt="">
+        </div>
+
+        <div class="conteudo-menu-lateral">
+
+            <div class="menu-lateral-main-header">
+
+                <div>
+                    <img src="../img/brazao.png" alt="BRAZÃO NSL">
+                </div>
+
+                <h2>Perfil</h2>
+            </div>
+            <div class="menu-lateral-main-main">
+                    <h4>NOME:</h4>
+                    <span><?= $_SESSION["nome"] ?></span>
+                    <hr>
+                    <h4>RA:</h4>
+                    <span><?= $_SESSION["RA"] ?></span>
+                    <hr>
+                    <h4>TURMA:</h4>
+                    <span><?= $_SESSION["serie"] ?></span>
+                    <hr>
+                    <br>
+
+                <br>
+                <a href="session.php">Sair</a>
+
+            </div>
+
+            <div class="menu-lateral-main-footer">
+                <a href="http://wa.me/+5527996121313" target="_blank" >Gabriel Cirqueira</a>
+                <img src="../img/coding.png" alt="">
+            </div>
+        </div>
+
     </div>
-
-  </div>
 
 
     <main class="main-bg">
-        <div class="main-caixa">
-            <div class="caixas">
-                <div>
-                    <div class="status">
-                        <h3 class="">SISTEMA <?php echo $dado["eletiva"] ?></h3>
-                        <form action="" method="post">
-                            <a <?php
-                                if ($dado["eletiva"] == "DESATIVADO") {
-                                    echo "href='#'";
-                                } else {
-                                    echo "href='../php/eletiva.php'";
-                                }
-                                ?> Class="animated-button1">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                eletiva </a>
-                        </form>
-                    </div>
+        <br>
+        <br>
+        <br>
+        <center>
+        <h3> <span> NSL - SISTEMA DE ELETIVAS E TUTORIA</span></h3><br><br>
 
-                    <div class="status">
-                        <form action="" method="post">
-                            <h3 class="">SISTEMA <?php echo $dado["tutoria"] ?></h3>
-                            <a <?php
-                                if ($dado["tutoria"] == "DESATIVADO") {
-                                    echo "href='#'";
-                                } else {
-                                    echo "href='../php/tutoria.php'";
-                                }
-                                ?> Class="animated-button1">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                TUTORIA</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </center>
+        <a <?php
+            if ($dado["eletiva"] == "DESATIVADO") {
+                echo "href='#'";
+            } else {
+                echo "href='../php/eletiva.php'";
+            }
+            ?> Class="button-ir-pag">
+            <img src="../img/light-bulb.png" alt="">
+            <br>
+            <h3>ELETIVA</h3>
+            <br>
+            <span class="">SISTEMA <?php echo $dado["eletiva"] ?></> 
+        </a>
+        <a  href='#' Class="button-ir-pag">
+
+            <img src="../img/conversation.png" alt="">
+            <br>
+            <h3>TUTORIA</h3>
+            <br>
+            <span class="">SISTEMA DESATIVADO</span>
+ </a>
     </main>
 
     <div id="sobreposicao-popup" class="sobreposicao-popup">
@@ -194,71 +160,43 @@ $turno = $_SESSION['turno'];
         }
 
         const menuBtn = document.getElementById("icone-menu-lateral")
-const menu = document.getElementById("area_menu_lateral")
-const menu_conteudo = document.getElementById("menu-lateral-icone-conteudo")
-const icone_fechar_menu = document.querySelector(".icone-menu-lateral-fechar")
+        const menu = document.getElementById("area_menu_lateral")
+        const menu_conteudo = document.getElementById("menu-lateral-icone-conteudo")
+        const icone_fechar_menu = document.querySelector(".icone-menu-lateral-fechar")
 
-function fecharMenu() {
-    menu.style.display = "none"
-    menu.style.backgroundColor = "rgba(0, 0, 0, 0)"
-    menu_conteudo.style.right = '-320px'
-    localStorage.setItem('menuAberto', 'false')
-}
+        function fecharMenu() {
+            menu.style.display = "none"
+            menu.style.backgroundColor = "rgba(0, 0, 0, 0)"
+            menu_conteudo.style.right = '-320px'
+            localStorage.setItem('menuAberto', 'false')
+        }
 
-function abrirMenu() {
-    menu.style.display = "block"
-    menu.style.backgroundColor = "rgba(0, 0, 0, 0.507)"
-    menu_conteudo.style.right = '0px'
-    localStorage.setItem('menuAberto', 'true')
-}
+        function abrirMenu() {
+            menu.style.display = "block"
+            menu.style.backgroundColor = "rgba(0, 0, 0, 0.507)"
+            menu_conteudo.style.right = '0px'
+            localStorage.setItem('menuAberto', 'true')
+        }
 
-icone_fechar_menu.addEventListener('click', fecharMenu)
+        icone_fechar_menu.addEventListener('click', fecharMenu)
 
-menuBtn.addEventListener('click', abrirMenu)
+        menuBtn.addEventListener('click', abrirMenu)
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    const menuAberto = localStorage.getItem('menuAberto') === 'true';
-    if (menuAberto) {
-        abrirMenu();
-    }
-});
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuAberto = localStorage.getItem('menuAberto') === 'true';
+            if (menuAberto) {
+                abrirMenu();
+            }
+        });
     </script>
 
     <footer>
+    <br>
         <div class="creditos">
             <p class="projeto-info">Projeto realizado pelos alunos de Altas Habilidades da escola "EEEM Nossa Senhora de Lourdes"
             </p>
-            <p class="supervisao-info">Supervisionado pelos professores Alex Menezes & Vânia Alves</p>
-
-            <div class="nomes-grupos">
-
-
-                <div class="back">
-                    <h4>Backend<br> desenvolvido por:</h4>
-                    <p class="backend-info"> Gabriel <br>Cirqueira</p>
-                </div>
-                <div class="vertical"></div>
-
-                <div class="bd">
-                    <h4>Banco de dados <br>desenvolvido por:</h4>
-                    <p class="bd-info"> Gabriel<br> Cirqueira &<br> Matheus <br>Trindade</p>
-
-                </div>
-                <div class="vertical"></div>
-
-                <div class="front">
-                    <h4>Frontend <br>desenvolvido por:</h4>
-                    <p class="frontend-info"> Guilherme<br> Vagmaker & <br> Arthur <br> Possino</p>
-
-                </div>
             </div>
-
-        </div>
-        <hr class="linha-horizontal">
-        <div class="informacoes-escola">
-
-
-        </div>
+        <br>
     </footer>
 
 </body>

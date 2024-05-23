@@ -139,6 +139,7 @@ width: 190px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: #ffffff6d;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.075);
   border-radius: 2px;
   width: 320px;
   height: 370px;
@@ -146,7 +147,6 @@ width: 190px;
   grid-template-columns: 1fr;
   place-items: center;
   position: relative;
-  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.075);
 }
 .botao:hover{ 
     background-color: #16a7b7; 
@@ -185,6 +185,15 @@ input[type="password"]:focus{
 
 }
 
+.main-label-gestor{
+  border-radius: 1px; 
+  width: 250px;
+  padding: 6px;
+  background-color: rgba(208, 208, 208, 0.718);
+  font-size: 1.2rem; 
+  display: flex;
+  place-items: center;
+}
 
   .brazao{
     width: 70px;
